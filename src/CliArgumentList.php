@@ -4,6 +4,8 @@ namespace Gt\Installer;
 use Iterator;
 
 class CliArgumentList implements Iterator {
+	const DEFAULT_COMMAND = "help";
+
 	protected $script;
 	/** @var CliArgument[] */
 	protected $argumentList = [];
@@ -20,19 +22,57 @@ class CliArgumentList implements Iterator {
 
 	protected function buildArgumentList(array $arguments):void {
 		$commandArgument = array_shift($arguments);
-		$this->argumentList []= new CliCommandArgument($commandArgument);
+		$this->argumentList []= new CliCommandArgument(
+			$commandArgument ?? self::DEFAULT_COMMAND
+		);
+
+		$skipNextArgument = false;
 
 		foreach ($arguments as $i => $arg) {
+			if($skipNextArgument) {
+				$skipNextArgument = false;
+				continue;
+			}
+
 			if ($arg[0] === "-") {
-				$nextArg = $arguments[$i + 1];
+				if(strstr($arg, "=")) {
+					$name = substr(
+						$arg,
+						0,
+						strpos(
+							$arg,
+							"="
+						)
+					);
+
+					$value = substr(
+						$arg,
+						strpos(
+							$arg,
+							"="
+						) + 1
+					);
+				}
+				else {
+					$skipNextArgument = true;
+					$name = $arg;
+					$value = $arguments[$i + 1];
+				}
 
 				if ($arg[1] === "-") {
-					$this->argumentList []= new CliLongOptionArgument($arg, $nextArg);
-				} else {
-					$this->argumentList []= new CliShortOptionArgument($arg, $nextArg);
+					$this->argumentList []= new CliLongOptionArgument(
+						$name,
+						$value
+					);
+				}
+				else {
+					$this->argumentList []= new CliShortOptionArgument(
+						$arg,
+						$value
+					);
 				}
 			} else {
-				$this->argumentList []= new CliValueArgument($arg);
+				$this->argumentList []= new CliNamedArgument($arg);
 			}
 		}
 	}
@@ -72,12 +112,47 @@ class CliArgumentList implements Iterator {
 		$this->iteratorIndex = 0;
 	}
 
-	public function contains(CliArgument $argument):bool {
-		$shortKey = $argument->
-		foreach($this->argumentList as $argument) {
-			if($argument instanceof CliLongOptionArgument) {
+	public function contains(CliParameter $parameter):bool {
+		$longOption = $parameter->getLongOption();
+		$shortOption = $parameter->getShortOption();
 
+		foreach($this->argumentList as $argument) {
+			$key = $argument->getKey();
+
+			if($argument instanceof CliLongOptionArgument) {
+				if($key === $longOption) {
+					return true;
+				}
+			}
+			elseif($argument instanceof CliShortOptionArgument) {
+				if($key === $shortOption) {
+					return true;
+				}
 			}
 		}
+
+		return false;
+	}
+
+	public function getValueForParameter(CliParameter $parameter):?string {
+		$longOption = $parameter->getLongOption();
+		$shortOption = $parameter->getShortOption();
+
+		foreach($this->argumentList as $argument) {
+			$key = $argument->getKey();
+
+			if($argument instanceof CliLongOptionArgument) {
+				if($key === $longOption) {
+					return $argument->getValue();
+				}
+			}
+			elseif($argument instanceof CliShortOptionArgument) {
+				if($key === $shortOption) {
+					return $argument->getValue();
+				}
+			}
+		}
+
+		return null;
 	}
 }

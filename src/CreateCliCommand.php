@@ -5,9 +5,9 @@ class CreateCliCommand extends CliCommand {
 	public function __construct() {
 		$this->setName("create");
 
-		$this->setRequiredValueParameter("project-name");
-		$this->setRequiredValueParameter("namespace");
-		$this->setOptionalValueParameter("thingy");
+		$this->setRequiredNamedParameter("project-name");
+		$this->setRequiredNamedParameter("namespace");
+		$this->setOptionalNamedParameter("thingy");
 
 		$this->setRequiredParameter(
 			true,
@@ -21,5 +21,9 @@ class CreateCliCommand extends CliCommand {
 			"blueprint",
 			"b"
 		);
+	}
+
+	public function run(CliArgumentList $arguments):void {
+
 	}
 }
