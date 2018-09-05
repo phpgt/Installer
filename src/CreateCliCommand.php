@@ -3,6 +3,8 @@ namespace Gt\Installer;
 
 class CreateCliCommand extends CliCommand {
 	public function __construct() {
+		parent::__construct();
+
 		$this->setName("create");
 
 		$this->setRequiredNamedParameter("project-name");
