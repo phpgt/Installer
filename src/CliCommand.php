@@ -4,24 +4,24 @@ namespace Gt\Installer;
 
 abstract class CliCommand {
 	protected $name;
-	protected $requiredValueArguments = [];
-	protected $optionalNamedArguments = [];
+	protected $requiredValueParameterList = [];
+	protected $optionalNamedParameterList = [];
 	/** @var CliOption[] */
-	protected $optionalArguments = [];
+	protected $optionalParameterList = [];
 	/** @var CliOption[] */
-	protected $requiredArguments = [];
-
-	public function __construct(string $name) {
-		$this->name = $name;
-	}
+	protected $requiredParameterList = [];
 
 	public function getName():string {
 		return $this->name;
 	}
 
+	protected function setName(string $name):void {
+		$this->name = $name;
+	}
+
 	public function checkArguments(CliArgumentList $argumentList):void {
 		$requiredValueArgumentCount = count(
-			$this->requiredValueArguments
+			$this->requiredValueParameterList
 		) + 1;
 		$passedValueArguments = 0;
 		foreach($argumentList as $argument) {
@@ -34,47 +34,51 @@ abstract class CliCommand {
 			throw new NotEnoughArgumentsException();
 		}
 
-		foreach($this->requiredValueArguments as $argument) {
-			// TODO: Check
+		foreach($this->requiredValueParameterList as $parameter) {
+			if(!$argumentList->contains($parameter)) {
+				throw new MissingRequiredArgumentException(
+					$parameter->getLongName()
+				);
+			}
 		}
 
-		foreach($this->requiredArguments as $argument) {
+		foreach($this->requiredParameterList as $parameter) {
 			// TODO: Check
 		}
 
 		var_dump($options);die();
 	}
 
-	protected function setRequiredValueArgument(string $option):void {
-		$this->requiredValueArguments []= new CliNamedOption(
+	protected function setRequiredValueParameter(string $option):void {
+		$this->requiredValueParameterList []= new CliNamedOption(
 			$option
 		);
 	}
 
-	protected function setOptionalNamedOption(string $option):void {
-		$this->optionalNamedArguments []= new CliNamedOption(
+	protected function setOptionalValueParameter(string $option):void {
+		$this->optionalNamedParameterList []= new CliNamedOption(
 			$option
 		);
 	}
 
-	protected function setRequiredArgument(
+	protected function setRequiredParameter(
 		bool $requireValue,
 		string $longOption,
 		string $shortOption = null
 	):void {
-		$this->requiredArguments []= new CliOption(
+		$this->requiredParameterList []= new CliOption(
 			$requireValue,
 			$longOption,
 			$shortOption
 		);
 	}
 
-	protected function setOptionalArgument(
+	protected function setOptionalParameter(
 		bool $requireValue,
 		string $longOption,
 		string $shortOption = null
 	):void {
-		$this->optionalArguments []= new CliOption(
+		$this->optionalParameterList []= new CliOption(
 			$requireValue,
 			$longOption,
 			$shortOption

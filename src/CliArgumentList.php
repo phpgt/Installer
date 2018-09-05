@@ -71,4 +71,13 @@ class CliArgumentList implements Iterator {
 	public function rewind() {
 		$this->iteratorIndex = 0;
 	}
+
+	public function contains(CliArgument $argument):bool {
+		$shortKey = $argument->
+		foreach($this->argumentList as $argument) {
+			if($argument instanceof CliLongOptionArgument) {
+
+			}
+		}
+	}
 }

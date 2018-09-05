@@ -3,21 +3,20 @@ namespace Gt\Installer;
 
 class CreateCliCommand extends CliCommand {
 	public function __construct() {
-		parent::__construct("create");
+		$this->setName("create");
 
-// Here a "named" option is something that doesn't require tacks.
-// For example: gt create projectname --key value
-// The "projectName" is a "named" option. Needs renaming after implementation...
-		$this->setRequiredArgument(
+		$this->setRequiredValueParameter("project-name");
+		$this->setRequiredValueParameter("namespace");
+		$this->setOptionalValueParameter("thingy");
+
+		$this->setRequiredParameter(
 			true,
 			"directory",
 			"d"
 		);
 
-		$this->setRequiredValueArgument("project-name");
-		$this->setRequiredValueArgument("namespace");
 
-		$this->setOptionalArgument(
+		$this->setOptionalParameter(
 			true,
 			"blueprint",
 			"b"
