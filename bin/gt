@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+namespace Gt\Installer;
+
+require implode(DIRECTORY_SEPARATOR, [
+	__DIR__,
+	"..",
+	"vendor",
+	"autoload.php",
+]);
+
+$app = new CliApplication(
+	"PHP.Gt Installer",
+	new CliArgumentList(...$argv),
+	new CreateCliCommand(),
+	new ServeCliCommand(),
+	new BuildCliCommand()
+);
+$app->run();
