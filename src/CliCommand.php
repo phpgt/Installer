@@ -5,6 +5,9 @@ namespace Gt\Installer;
 use SplFileObject;
 
 abstract class CliCommand {
+	/** @var CliStreams */
+	protected $streams;
+
 	protected $name;
 	protected $description = "";
 	/** @var CliNamedParameter[] */
@@ -16,21 +19,14 @@ abstract class CliCommand {
 	/** @var CliParameter[] */
 	protected $requiredParameterList = [];
 
-	public function __construct() {
-		$this->out = new SplFileObject(
-			"php://stdout",
-			"w"
-		);
-		$this->err = new SplFileObject(
-			"php://stderr",
-			"w"
-		);
+	public function setStreams(CliStreams $streams) {
+		$this->streams = $streams;
 	}
 
 	abstract public function run(CliArgumentList $arguments):void;
 
 	public function write(string $message):void {
-		$this->out->fwrite($message);
+		$this->streams->getOutStream()->fwrite($message);
 	}
 
 	public function writeLine(string $message = ""):void {

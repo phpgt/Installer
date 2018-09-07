@@ -13,8 +13,6 @@ class CliHelpCommand extends CliCommand {
 		string $applicationName,
 		array $applicationCommandList = []
 	) {
-		parent::__construct();
-
 		$this->setName("help");
 		$this->setDescription("Display information about available commands");
 
