@@ -6,6 +6,7 @@ class CreateCliCommand extends CliCommand {
 		parent::__construct();
 
 		$this->setName("create");
+		$this->setDescription("Set up a new WebEngine project.");
 
 		$this->setRequiredNamedParameter("project-name");
 		$this->setRequiredNamedParameter("namespace");

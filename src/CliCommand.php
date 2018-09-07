@@ -6,6 +6,7 @@ use SplFileObject;
 
 abstract class CliCommand {
 	protected $name;
+	protected $description = "";
 	/** @var CliNamedParameter[] */
 	protected $optionalNamedParameterList = [];
 	/** @var CliNamedParameter[] */
@@ -43,6 +44,15 @@ abstract class CliCommand {
 	protected function setName(string $name):void {
 		$this->name = $name;
 	}
+
+	public function getDescription():string {
+		return $this->description;
+	}
+
+	protected function setDescription(string $description):void {
+		$this->description = $description;
+	}
+
 
 	public function checkArguments(CliArgumentList $argumentList):void {
 		$requiredNamedParameters = count(

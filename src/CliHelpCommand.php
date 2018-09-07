@@ -3,6 +3,7 @@ namespace Gt\Installer;
 
 class CliHelpCommand extends CliCommand {
 	protected $applicationName;
+	/** @var CliCommand[] */
 	protected $applicationCommandList;
 
 	/**
@@ -15,6 +16,7 @@ class CliHelpCommand extends CliCommand {
 		parent::__construct();
 
 		$this->setName("help");
+		$this->setDescription("Display information about available commands");
 
 		$this->applicationName = $applicationName;
 		$this->applicationCommandList = $applicationCommandList;
@@ -27,7 +29,11 @@ class CliHelpCommand extends CliCommand {
 		$this->writeLine("Available commands:");
 
 		foreach($this->applicationCommandList as $command) {
-			$this->writeLine("\t" . $command->getName());
+			$this->writeLine(" • " .
+				$command->getName()
+				. "\t"
+				. $command->getDescription()
+			);
 		}
 	}
 }
