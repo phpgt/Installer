@@ -1,0 +1,14 @@
+{
+	"name": "phpgt/installer",
+	"description": "Installs the `gt` commands for easy management of projects",
+
+	"bin": [
+		"bin/gt"
+	],
+
+	"autoload": {
+		"psr-4": {
+			"Gt\\Installer\\": "./src"
+		}
+	}
+}
