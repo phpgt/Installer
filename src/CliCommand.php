@@ -23,15 +23,7 @@ abstract class CliCommand {
 		$this->streams = $streams;
 	}
 
-	abstract public function run(CliArgumentList $arguments):void;
-
-	public function write(string $message):void {
-		$this->streams->getOutStream()->fwrite($message);
-	}
-
-	public function writeLine(string $message = ""):void {
-		$this->write($message . PHP_EOL);
-	}
+	abstract public function run(CliArgumentValueList $arguments):void;
 
 	public function getName():string {
 		return $this->name;
@@ -51,7 +43,7 @@ abstract class CliCommand {
 
 
 	public function checkArguments(CliArgumentList $argumentList):void {
-		$requiredNamedParameters = count(
+		$numRequiredNamedParameters = count(
 			$this->requiredNamedParameterList
 		);
 
@@ -62,7 +54,7 @@ abstract class CliCommand {
 			}
 		}
 
-		if($passedNamedArguments < $requiredNamedParameters) {
+		if($passedNamedArguments < $numRequiredNamedParameters) {
 			throw new NotEnoughArgumentsException();
 		}
 
@@ -91,6 +83,108 @@ abstract class CliCommand {
 	 */
 	public function getRequiredNamedParameterList():array {
 		return $this->requiredNamedParameterList;
+	}
+
+	public function getUsage():string {
+		$message = "";
+
+		$message .= "Usage: ";
+		$message .= $this->getName();
+
+		foreach($this->requiredNamedParameterList as $parameter) {
+			$message .= " ";
+			$message .= $parameter->getOptionName();
+		}
+
+		foreach($this->optionalNamedParameterList as $parameter) {
+			$message .= " [";
+			$message .= $parameter->getOptionName();
+			$message .= "]";
+		}
+
+		foreach($this->requiredParameterList as $parameter) {
+			$message .= " --";
+			$message .= $parameter->getLongOption();
+
+			if($short = $parameter->getShortOption()) {
+				$message .= "|-$short";
+			}
+
+			if($parameter->isValueRequired()) {
+				$message .= " ";
+				$message .= $parameter->getExample();
+			}
+		}
+
+		foreach($this->optionalParameterList as $parameter) {
+			$message .= " [--";
+			$message .= $parameter->getLongOption();
+
+			if($short = $parameter->getShortOption()) {
+				$message .= "|-$short";
+			}
+
+			if($parameter->isValueRequired()) {
+				$message .= " ";
+				$message .= $parameter->getExample();
+				$message .= "]";
+			}
+		}
+
+		return $message;
+	}
+
+	public function getArgumentValueList(
+		CliArgumentList $arguments
+	):CliArgumentValueList {
+		$namedParameterIndex = 0;
+		/** @var CliNamedParameter[] */
+		$namedParameterList = array_merge(
+			$this->requiredNamedParameterList,
+			$this->optionalNamedParameterList
+		);
+
+		$parameterIndex = 0;
+		/** @var CliParameter[] $parameterList */
+		$parameterList = array_merge(
+			$this->requiredParameterList,
+			$this->optionalParameterList
+		);
+
+		$argumentValueList = new CliArgumentValueList();
+
+		foreach($arguments as $argument) {
+			if($argument instanceof CliCommandArgument) {
+				continue;
+			}
+
+			if($argument instanceof CliNamedArgument) {
+				/** @var CliNamedParameter $parameter */
+				$parameter = $namedParameterList[
+					$namedParameterIndex
+				];
+
+				$argumentValueList->set(
+					$parameter->getOptionName(),
+					$argument->getValue()
+				);
+				$namedParameterIndex++;
+			}
+
+			if($argument instanceof CliArgument) {
+				/** @var CliParameter $parameter */
+				$parameter = $parameterList[
+					$parameterIndex
+				];
+
+				$argumentValueList->set(
+					$parameter->getLongOption(),
+					$argument->getValue()
+				);
+			}
+		}
+
+		return $argumentValueList;
 	}
 
 	protected function setRequiredNamedParameter(string $name):void {
@@ -122,12 +216,14 @@ abstract class CliCommand {
 	protected function setRequiredParameter(
 		bool $requireValue,
 		string $longOption,
-		string $shortOption = null
+		string $shortOption = null,
+		string $example = null
 	):void {
 		$this->requiredParameterList []= new CliParameter(
 			$requireValue,
 			$longOption,
-			$shortOption
+			$shortOption,
+			$example
 		);
 	}
 
@@ -141,12 +237,14 @@ abstract class CliCommand {
 	protected function setOptionalParameter(
 		bool $requireValue,
 		string $longOption,
-		string $shortOption = null
+		string $shortOption = null,
+		string $example = null
 	):void {
 		$this->optionalParameterList []= new CliParameter(
 			$requireValue,
 			$longOption,
-			$shortOption
+			$shortOption,
+			$example
 		);
 	}
 }

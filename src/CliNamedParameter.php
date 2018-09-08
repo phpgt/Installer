@@ -1,14 +1,13 @@
 <?php
 namespace Gt\Installer;
 
-class CliNamedParameter {
-	protected $optionName;
-
+class CliNamedParameter extends CliParameter {
+	/** @noinspection PhpMissingParentConstructorInspection */
 	public function __construct(string $optionName) {
-		$this->optionName = $optionName;
+		$this->longOption = $optionName;
 	}
 
 	public function getOptionName():string {
-		return $this->optionName;
+		return $this->longOption;
 	}
 }

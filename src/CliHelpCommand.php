@@ -20,14 +20,14 @@ class CliHelpCommand extends CliCommand {
 		$this->applicationCommandList = $applicationCommandList;
 	}
 
-	public function run(CliArgumentList $arguments): void {
-		$this->writeLine($this->applicationName);
-		$this->writeLine();
+	public function run(CliArgumentValueList $arguments): void {
+		$this->streams->writeLine($this->applicationName);
+		$this->streams->writeLine();
 
-		$this->writeLine("Available commands:");
+		$this->streams->writeLine("Available commands:");
 
 		foreach($this->applicationCommandList as $command) {
-			$this->writeLine(" • " .
+			$this->streams->writeLine(" • " .
 				$command->getName()
 				. "\t"
 				. $command->getDescription()

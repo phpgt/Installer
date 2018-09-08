@@ -7,7 +7,7 @@ class ServeCliCommand extends CliCommand {
 		$this->setDescription("Start a local webserver for the current project.");
 	}
 
-	public function run(CliArgumentList $arguments): void {
+	public function run(CliArgumentValueList $arguments): void {
 		// TODO: Implement run() method.
 	}
 }

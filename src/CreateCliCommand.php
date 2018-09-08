@@ -6,25 +6,36 @@ class CreateCliCommand extends CliCommand {
 		$this->setName("create");
 		$this->setDescription("Set up a new WebEngine project.");
 
-		$this->setRequiredNamedParameter("project-name");
-		$this->setRequiredNamedParameter("namespace");
-		$this->setOptionalNamedParameter("thingy");
-
-		$this->setRequiredParameter(
-			true,
-			"directory",
-			"d"
-		);
+		$this->setRequiredNamedParameter("name");
+		$this->setOptionalNamedParameter("namespace");
 
 
 		$this->setOptionalParameter(
 			true,
 			"blueprint",
-			"b"
+			"b",
+			"blueprint_name"
 		);
 	}
 
-	public function run(CliArgumentList $arguments):void {
+	public function run(CliArgumentValueList $arguments):void {
+		$cwd = getcwd();
 
+		$dir = $arguments->get("name");
+		$this->checkDirectoryNotExists($dir);
+
+		$fullPath = implode(DIRECTORY_SEPARATOR, [
+			$cwd,
+			$dir,
+		]);
+		$this->streams->writeLine(
+			"Creating new project in: $fullPath ..."
+		);
+	}
+
+	protected function checkDirectoryNotExists(string $dir):void {
+		if(is_dir($dir)) {
+			die("TODO: Installer-specific (Non-CLI) exception");
+		}
 	}
 }

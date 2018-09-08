@@ -36,12 +36,20 @@ class CliApplication {
 		$commandName = $this->arguments->getCommandName();
 		$command = $this->findCommandByName($commandName);
 		$command->setStreams($this->streams);
+		$argumentValueList = $command->getArgumentValueList($this->arguments);
 
 		try {
 			$command->checkArguments($this->arguments);
 		}
 		catch(NotEnoughArgumentsException $exception) {
-
+			$this->streams->writeLine(
+				"Not enough arguments passed.",
+				CliStreams::ERROR
+			);
+			$this->streams->writeLine(
+				$command->getUsage(),
+				CliStreams::ERROR
+			);
 		}
 		catch(MissingRequiredParameterException $exception) {
 
@@ -50,7 +58,7 @@ class CliApplication {
 
 		}
 
-		$command->run($this->arguments);
+		$command->run($argumentValueList);
 	}
 
 	protected function findCommandByName(string $name):CliCommand {

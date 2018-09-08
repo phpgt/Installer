@@ -7,7 +7,7 @@ class BuildCliCommand extends CliCommand {
 		$this->setDescription("Compile all client-side assets.");
 	}
 
-	public function run(CliArgumentList $arguments): void {
+	public function run(CliArgumentValueList $arguments): void {
 		// TODO: Implement run() method.
 	}
 }

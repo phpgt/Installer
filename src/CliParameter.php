@@ -5,15 +5,18 @@ class CliParameter {
 	protected $requireValue;
 	protected $longOption;
 	protected $shortOption;
+	protected $example;
 
 	public function __construct(
 		bool $requireValue,
 		string $longOption,
-		string $shortOption = null
+		string $shortOption = null,
+		string $example = null
 	) {
 		$this->requireValue = $requireValue;
 		$this->longOption = $longOption;
 		$this->shortOption = $shortOption;
+		$this->example = $example;
 	}
 
 	public function __toString():string {
@@ -38,5 +41,9 @@ class CliParameter {
 
 	public function isValueRequired():bool {
 		return $this->requireValue;
+	}
+
+	public function getExample():string {
+		return $this->example ?? "value";
 	}
 }
