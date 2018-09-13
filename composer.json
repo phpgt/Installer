@@ -2,13 +2,19 @@
 	"name": "phpgt/installer",
 	"description": "Installs the `gt` commands for easy management of projects",
 
+	"minimum-stability": "dev",
+
 	"bin": [
 		"bin/gt"
 	],
 
-	"autoload": {
-		"psr-4": {
-			"Gt\\Installer\\": "./src"
-		}
-	}
+	"require": {
+"phpgt/cli": "dev-master"
+},
+
+"autoload": {
+"psr-4": {
+"Gt\\Installer\\": "./src"
+}
+}
 }
