@@ -29,5 +29,7 @@ class CreateCommand extends Command {
 		if(is_dir($appDir)) {
 			throw new CommandException("Directory already exists");
 		}
+
+		exec("composer create-project webengine-blueprint/empty $appDir");
 	}
 }
