@@ -2,6 +2,9 @@
 <?php
 namespace Gt\Installer;
 
+use Gt\Cli\Argument\ArgumentList;
+use Gt\Installer\Command\CreateCommand;
+
 require implode(DIRECTORY_SEPARATOR, [
 	__DIR__,
 	"..",
@@ -9,11 +12,9 @@ require implode(DIRECTORY_SEPARATOR, [
 	"autoload.php",
 ]);
 
-$app = new CliApplication(
+$app = new \Gt\Cli\Application(
 	"PHP.Gt Installer",
-	new CliArgumentList(...$argv),
-	new CreateCliCommand(),
-	new ServeCliCommand(),
-	new BuildCliCommand()
+	new ArgumentList(...$argv),
+	new CreateCommand()
 );
 $app->run();
