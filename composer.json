@@ -9,12 +9,12 @@
 	],
 
 	"require": {
-"phpgt/cli": "dev-master"
-},
+		"phpgt/cli": "dev-master"
+	},
 
-"autoload": {
-"psr-4": {
-"Gt\\Installer\\": "./src"
-}
-}
+	"autoload": {
+		"psr-4": {
+			"Gt\\Installer\\": "./src"
+		}
+	}
 }
