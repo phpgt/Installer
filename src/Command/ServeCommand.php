@@ -22,7 +22,7 @@ class ServeCommand extends Command {
 		$this->setOptionalNamedParameter("name");
 	}
 
-	public function run(ArgumentValueList $arguments):void {
+	public function run(ArgumentValueList $arguments = null):void {
 // TODO: Run inbuilt server.
 // If the "name" parmeter is passed, change working directory there first.
 	}

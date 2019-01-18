@@ -15,14 +15,14 @@ class CreateCommand extends Command {
 		$this->setRequiredNamedParameter("name");
 	}
 
-	public function run(ArgumentValueList $arguments):void {
+	public function run(ArgumentValueList $arguments = null):void {
 		$cwd = getcwd();
 		$appDir = implode(DIRECTORY_SEPARATOR, [
 			$cwd,
 			$arguments->get("name"),
 		]);
 
-		$this->stream->writeLine(
+		$this->writeLine(
 			"Creating new application in: $appDir"
 		);
 
