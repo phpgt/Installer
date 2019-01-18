@@ -30,6 +30,6 @@ class CreateCommand extends Command {
 			throw new CommandException("Directory already exists");
 		}
 
-		exec("composer create-project webengine-blueprint/empty $appDir");
+		exec("composer create-project --remove-vcs webengine-blueprints/empty:dev-master $appDir");
 	}
 }
