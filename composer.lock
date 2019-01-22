@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "phpgt/cli",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Cli.git",
-                "reference": "96517bb03340fa8d7190241a00a303a9d7743fd0"
+                "reference": "8affee1e4bea5c6ae2bf72d30ca5ef64002b7925"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/96517bb03340fa8d7190241a00a303a9d7743fd0",
-                "reference": "96517bb03340fa8d7190241a00a303a9d7743fd0",
+                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/8affee1e4bea5c6ae2bf72d30ca5ef64002b7925",
+                "reference": "8affee1e4bea5c6ae2bf72d30ca5ef64002b7925",
                 "shasum": ""
             },
             "require-dev": {
@@ -46,7 +46,7 @@
                 "terminal",
                 "webengine"
             ],
-            "time": "2019-01-17T10:12:56+00:00"
+            "time": "2019-01-22T22:14:10+00:00"
         }
     ],
     "packages-dev": [],
