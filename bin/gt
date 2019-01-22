@@ -4,6 +4,7 @@ namespace Gt\Installer;
 
 use Gt\Cli\Argument\ArgumentList;
 use Gt\Installer\Command\CreateCommand;
+use Gt\Installer\Command\ServeCommand;
 
 require implode(DIRECTORY_SEPARATOR, [
 	__DIR__,
@@ -15,6 +16,7 @@ require implode(DIRECTORY_SEPARATOR, [
 $app = new \Gt\Cli\Application(
 	"PHP.Gt Installer",
 	new ArgumentList(...$argv),
-	new CreateCommand()
+	new CreateCommand(),
+	new ServeCommand()
 );
 $app->run();

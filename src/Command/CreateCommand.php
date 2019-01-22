@@ -4,6 +4,7 @@ namespace Gt\Installer\Command;
 use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 use Gt\Cli\Command\CommandException;
+use Gt\Cli\Stream;
 
 class CreateCommand extends Command {
 	public function __construct() {
@@ -27,7 +28,10 @@ class CreateCommand extends Command {
 		);
 
 		if(is_dir($appDir)) {
-			throw new CommandException("Directory already exists");
+			$this->writeLine(
+				"Directory already exists",
+				Stream::ERROR
+			);
 		}
 
 		exec("composer create-project --remove-vcs webengine-blueprints/empty:dev-master $appDir");

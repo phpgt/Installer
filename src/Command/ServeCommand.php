@@ -6,7 +6,7 @@ use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 
 class ServeCommand extends Command {
-	public function __construct(ArgumentValueList $arguments) {
+	public function __construct() {
 		$this->setName("serve");
 		$this->setDescription(
 			"Run a local HTTP server"
