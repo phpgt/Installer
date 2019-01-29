@@ -35,5 +35,7 @@ class CreateCommand extends Command {
 		}
 
 		exec("composer create-project --remove-vcs webengine-blueprints/empty:dev-master $appDir");
+// TODO: Use config-generate to set the correct namespace.
+// TODO: Update project's composer.json to autoload the correct application classes (from namespace).
 	}
 }
