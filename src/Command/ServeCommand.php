@@ -4,6 +4,7 @@ namespace Gt\Installer\Command;
 
 use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
+use Gt\Cli\Stream;
 
 class ServeCommand extends Command {
 	public function __construct() {
@@ -18,12 +19,48 @@ class ServeCommand extends Command {
 			"p",
 			"8080"
 		);
-
-		$this->setOptionalNamedParameter("name");
 	}
 
 	public function run(ArgumentValueList $arguments = null):void {
-// TODO: Run inbuilt server.
-// If the "name" parmeter is passed, change working directory there first.
+		$gtServeCommand = implode(DIRECTORY_SEPARATOR, [
+			"vendor",
+			"bin",
+			"gt-serve",
+		]);
+
+		$cwd = getcwd();
+		$topCwd = "/";
+		if(strpos($cwd, ":\\") === 1) {
+			$topCwd = substr($cwd, 0,3);
+		}
+
+		do {
+			if(file_exists($gtServeCommand)) {
+				break;
+			}
+
+			chdir("..");
+		}
+		while(getcwd() !== $topCwd);
+
+		if(!file_exists($gtServeCommand)) {
+			$this->writeLine(
+				"The current directory is not a WebEngine application.",
+				Stream::ERROR
+			);
+			return;
+		}
+
+		if(getcwd() !== $cwd) {
+			$cwd = getcwd();
+			$this->writeLine("Changed working directory to $cwd.");
+		}
+
+		$cmd = implode(" ", [
+			$gtServeCommand,
+			"--port " . $arguments->get("port")
+		]);
+		passthru($cmd, $returnVar);
+		exit($returnVar);
 	}
 }

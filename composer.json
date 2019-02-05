@@ -5,6 +5,7 @@
 		"bin/gt"
 	],
 	"require": {
+		"php": ">=7.2",
 		"phpgt/cli": "1.*"
 	},
 	"autoload": {

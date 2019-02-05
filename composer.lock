@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f738be61fe2b5c52655846f8955d9a97",
+    "content-hash": "3da5d42f1656b8c08055fa9a183cfea7",
     "packages": [
         {
             "name": "phpgt/cli",
@@ -55,6 +55,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.2"
+    },
     "platform-dev": []
 }
