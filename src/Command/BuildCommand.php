@@ -1,34 +1,26 @@
 <?php
-
 namespace Gt\Installer\Command;
 
 use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 use Gt\Cli\Stream;
 
-class ServeCommand extends Command {
+class BuildCommand extends Command {
 	public function __construct() {
-		$this->setName("serve");
+		$this->setName("build");
 		$this->setDescription(
-			"Run a local HTTP server"
-		);
-
-		$this->setOptionalParameter(
-			true,
-			"port",
-			"p",
-			"8080"
+			"Build the client-side files"
 		);
 	}
 
 	public function run(ArgumentValueList $arguments = null):void {
-		$gtServeCommand = implode(DIRECTORY_SEPARATOR, [
+		$gtBuildCommand = implode(DIRECTORY_SEPARATOR, [
 			"vendor",
 			"bin",
-			"gt-serve",
+			"gt-build",
 		]);
 
-		if(!file_exists($gtServeCommand)) {
+		if(!file_exists($gtBuildCommand)) {
 			$this->writeLine(
 				"The current directory is not a WebEngine application.",
 				Stream::ERROR
@@ -37,8 +29,7 @@ class ServeCommand extends Command {
 		}
 
 		$cmd = implode(" ", [
-			$gtServeCommand,
-			"--port " . $arguments->get("port")
+			$gtBuildCommand,
 		]);
 		passthru($cmd);
 	}
