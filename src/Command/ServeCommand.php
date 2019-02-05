@@ -28,32 +28,12 @@ class ServeCommand extends Command {
 			"gt-serve",
 		]);
 
-		$cwd = getcwd();
-		$topCwd = "/";
-		if(strpos($cwd, ":\\") === 1) {
-			$topCwd = substr($cwd, 0,3);
-		}
-
-		do {
-			if(file_exists($gtServeCommand)) {
-				break;
-			}
-
-			chdir("..");
-		}
-		while(getcwd() !== $topCwd);
-
 		if(!file_exists($gtServeCommand)) {
 			$this->writeLine(
 				"The current directory is not a WebEngine application.",
 				Stream::ERROR
 			);
 			return;
-		}
-
-		if(getcwd() !== $cwd) {
-			$cwd = getcwd();
-			$this->writeLine("Changed working directory to $cwd.");
 		}
 
 		$cmd = implode(" ", [
