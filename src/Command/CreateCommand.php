@@ -3,7 +3,6 @@ namespace Gt\Installer\Command;
 
 use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
-use Gt\Cli\Command\CommandException;
 use Gt\Cli\Stream;
 
 class CreateCommand extends Command {
@@ -35,7 +34,8 @@ class CreateCommand extends Command {
 		}
 
 		exec("composer create-project --remove-vcs webengine-blueprints/empty:dev-master $appDir");
-// TODO: Use config-generate to set the correct namespace.
-// TODO: Update project's composer.json to autoload the correct application classes (from namespace).
+// TODO: Future release of php.gt/config:
+// Use config-generate to set the correct namespace.
+// Update project's composer.json to autoload the correct application classes (from namespace).
 	}
 }
