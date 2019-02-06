@@ -8,12 +8,28 @@ use Gt\Installer\Command\CreateCommand;
 use Gt\Installer\Command\RunCommand;
 use Gt\Installer\Command\ServeCommand;
 
-require implode(DIRECTORY_SEPARATOR, [
-	__DIR__,
-	"..",
-	"vendor",
-	"autoload.php",
-]);
+$autoloadLocations = [
+	implode(DIRECTORY_SEPARATOR, [
+		__DIR__,
+		"..",
+		"..",
+		"..",
+		"autoload.php",
+	]),
+	implode(DIRECTORY_SEPARATOR, [
+		__DIR__,
+		"..",
+		"vendor",
+		"autoload.php",
+	]),
+];
+
+foreach($autoloadLocations as $location) {
+	if(file_exists($location)) {
+		require($location);
+		break;
+	}
+}
 
 $app = new \Gt\Cli\Application(
 	"PHP.Gt Installer",
