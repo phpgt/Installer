@@ -38,8 +38,9 @@ class ServeCommand extends Command {
 
 		$cmd = implode(" ", [
 			$gtServeCommand,
-			"--port " . $arguments->get("port")
+			"--port " . $arguments->get("port", 8080)
 		]);
+
 		passthru($cmd);
 	}
 }
