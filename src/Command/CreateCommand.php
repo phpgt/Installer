@@ -13,6 +13,12 @@ class CreateCommand extends Command {
 		);
 
 		$this->setRequiredNamedParameter("name");
+		$this->setOptionalParameter(
+			true,
+			"blueprint",
+			"b",
+			"BLUEPRINT_NAME"
+		);
 	}
 
 	public function run(ArgumentValueList $arguments = null):void {
@@ -22,10 +28,6 @@ class CreateCommand extends Command {
 			$arguments->get("name"),
 		]);
 
-		$this->writeLine(
-			"Creating new application in: $appDir"
-		);
-
 		if(is_dir($appDir)) {
 			$this->writeLine(
 				"Directory already exists",
@@ -33,7 +35,14 @@ class CreateCommand extends Command {
 			);
 		}
 
-		exec("composer create-project --remove-vcs webengine-blueprints/empty:dev-master $appDir");
+		$blueprint = $arguments->get("blueprint", "empty");
+		$this->writeLine(
+			"Creating new application in: $appDir"
+		);
+		$this->writeLine(
+			"Using blueprint: $blueprint"
+		);
+		exec("composer create-project --remove-vcs webengine-blueprints/$blueprint:dev-master $appDir");
 // TODO: Future release of php.gt/config:
 // Use config-generate to set the correct namespace.
 // Update project's composer.json to autoload the correct application classes (from namespace).
