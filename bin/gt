@@ -5,6 +5,7 @@ namespace Gt\Installer;
 use Gt\Cli\Argument\ArgumentList;
 use Gt\Installer\Command\BuildCommand;
 use Gt\Installer\Command\CreateCommand;
+use Gt\Installer\Command\CronCommand;
 use Gt\Installer\Command\RunCommand;
 use Gt\Installer\Command\ServeCommand;
 
@@ -32,11 +33,12 @@ foreach($autoloadLocations as $location) {
 }
 
 $app = new \Gt\Cli\Application(
-	"PHP.Gt Installer",
+	"PHP.Gt Command Line Interface",
 	new ArgumentList(...$argv),
 	new CreateCommand(),
-	new ServeCommand(),
+	new RunCommand(),
 	new BuildCommand(),
-	new RunCommand()
+	new CronCommand(),
+	new ServeCommand()
 );
 $app->run();

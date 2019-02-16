@@ -3,22 +3,46 @@ namespace Gt\Installer\Command;
 
 use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
+use Gt\Cli\Parameter\NamedParameter;
+use Gt\Cli\Parameter\Parameter;
 use Gt\Cli\Stream;
 
 class CreateCommand extends Command {
-	public function __construct() {
-		$this->setName("create");
-		$this->setDescription(
-			"Create a new WebEngine application"
-		);
+	public function getName():string {
+		return "create";
+	}
 
-		$this->setRequiredNamedParameter("name");
-		$this->setOptionalParameter(
-			true,
-			"blueprint",
-			"b",
-			"BLUEPRINT_NAME"
-		);
+	public function getDescription():string {
+		return "Create a new WebEngine application";
+	}
+
+	/** @return  NamedParameter[] */
+	public function getRequiredNamedParameterList():array {
+		return [
+			"name"
+		];
+	}
+
+	/** @return  NamedParameter[] */
+	public function getOptionalNamedParameterList():array {
+		return [];
+	}
+
+	/** @return  Parameter[] */
+	public function getOptionalParameterList():array {
+		return [
+			new Parameter(
+				true,
+				"blueprint",
+				"b",
+				"BLUEPRINT_NAME"
+			),
+		];
+	}
+
+	/** @return  Parameter[] */
+	public function getRequiredParameterList():array {
+		return [];
 	}
 
 	public function run(ArgumentValueList $arguments = null):void {

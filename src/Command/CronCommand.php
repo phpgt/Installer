@@ -1,20 +1,18 @@
 <?php
-
 namespace Gt\Installer\Command;
 
 use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
-use Gt\Cli\Stream;
 
-class ServeCommand extends Command {
+class CronCommand extends Command {
 	public function getName():string {
-		return "serve";
+		return "cron";
 	}
 
 	public function getDescription():string {
-		return "Run a local development HTTP server";
+		return "Run any cron jobs that are scheduled to execute now";
 	}
 
 	/** @return  NamedParameter[] */
@@ -24,13 +22,7 @@ class ServeCommand extends Command {
 
 	/** @return  NamedParameter[] */
 	public function getOptionalNamedParameterList():array {
-		return [
-			new Parameter(
-				true,
-				"port",
-				"p"
-			),
-		];
+		return [];
 	}
 
 	/** @return  Parameter[] */
@@ -44,25 +36,6 @@ class ServeCommand extends Command {
 	}
 
 	public function run(ArgumentValueList $arguments = null):void {
-		$gtServeCommand = implode(DIRECTORY_SEPARATOR, [
-			"vendor",
-			"bin",
-			"gt-serve",
-		]);
-
-		if(!file_exists($gtServeCommand)) {
-			$this->writeLine(
-				"The current directory is not a WebEngine application.",
-				Stream::ERROR
-			);
-			return;
-		}
-
-		$cmd = implode(" ", [
-			$gtServeCommand,
-			"--port " . $arguments->get("port", 8080)
-		]);
-
-		passthru($cmd);
+		$this->writeLine("TODO: Cron command");
 	}
 }
