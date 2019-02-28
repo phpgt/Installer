@@ -6,6 +6,7 @@ use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
+use Gt\Cli\Process\Process;
 use Gt\Cli\Stream;
 
 class ServeCommand extends Command {
@@ -47,7 +48,7 @@ class ServeCommand extends Command {
 		$gtServeCommand = implode(DIRECTORY_SEPARATOR, [
 			"vendor",
 			"bin",
-			"gt-serve",
+			"serve",
 		]);
 
 		if(!file_exists($gtServeCommand)) {
@@ -59,10 +60,16 @@ class ServeCommand extends Command {
 		}
 
 		$cmd = implode(" ", [
-			$gtServeCommand,
-			"--port " . $arguments->get("port", 8080)
+//			$gtServeCommand,
+			"echo one && sleep 1 && echo two && sleep 1 && echo three"
+//			"--port " . $arguments->get("port", 8080)
 		]);
 
-		passthru($cmd);
+		$process = new Process($cmd);
+		$process->exec();
+
+		while($process->isAlive()) {
+			echo $process->read();
+		}
 	}
 }

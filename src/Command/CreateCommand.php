@@ -19,7 +19,7 @@ class CreateCommand extends Command {
 	/** @return  NamedParameter[] */
 	public function getRequiredNamedParameterList():array {
 		return [
-			"name"
+			new NamedParameter("name")
 		];
 	}
 
@@ -66,7 +66,11 @@ class CreateCommand extends Command {
 		$this->writeLine(
 			"Using blueprint: $blueprint"
 		);
+
 		exec("composer create-project --remove-vcs webengine-blueprints/$blueprint:dev-master $appDir");
+
+		$this->writeLine();
+		$this->writeLine("Installation complete. Have fun! https://www.php.gt/documentation");
 // TODO: Future release of php.gt/config:
 // Use config-generate to set the correct namespace.
 // Update project's composer.json to autoload the correct application classes (from namespace).
