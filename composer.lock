@@ -8,17 +8,20 @@
     "packages": [
         {
             "name": "phpgt/cli",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Cli.git",
-                "reference": "36bea0ad76c1e580ebbb769a83c574a769cf3f5a"
+                "reference": "363ec202fac3ed95b9cf85cc8a51597675acd57e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/36bea0ad76c1e580ebbb769a83c574a769cf3f5a",
-                "reference": "36bea0ad76c1e580ebbb769a83c574a769cf3f5a",
+                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/363ec202fac3ed95b9cf85cc8a51597675acd57e",
+                "reference": "363ec202fac3ed95b9cf85cc8a51597675acd57e",
                 "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
             },
             "require-dev": {
                 "phpunit/phpunit": "8.*"
@@ -46,7 +49,7 @@
                 "terminal",
                 "webengine"
             ],
-            "time": "2019-02-23T21:35:02+00:00"
+            "time": "2019-02-23T22:25:08+00:00"
         }
     ],
     "packages-dev": [],
