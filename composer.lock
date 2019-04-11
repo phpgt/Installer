@@ -4,24 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3da5d42f1656b8c08055fa9a183cfea7",
+    "content-hash": "8e172ac92c0b36b76d422a2aa396a2b6",
     "packages": [
         {
             "name": "phpgt/cli",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PhpGt/Cli.git",
-                "reference": "363ec202fac3ed95b9cf85cc8a51597675acd57e"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/363ec202fac3ed95b9cf85cc8a51597675acd57e",
-                "reference": "363ec202fac3ed95b9cf85cc8a51597675acd57e",
-                "shasum": ""
+                "type": "path",
+                "url": "/home/g105b/Code/PhpGt/Cli",
+                "reference": "5ab4bdf75cac9e13456a32793ddc99b3bcd0bacd",
+                "shasum": null
             },
             "require": {
-                "php": ">=7.2"
+                "ext-json": "*",
+                "php": ">=7.2",
+                "phpgt/daemon": "dev-master"
             },
             "require-dev": {
                 "phpunit/phpunit": "8.*"
@@ -32,7 +29,11 @@
                     "Gt\\Cli\\": "./src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Gt\\Cli\\Test\\": "./test/unit"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -48,14 +49,75 @@
                 "phpgt",
                 "terminal",
                 "webengine"
+            ]
+        },
+        {
+            "name": "phpgt/daemon",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/home/g105b/Code/PhpGt/Daemon",
+                "reference": "5bba511a35a0e5a79c2683b9d2a5472cbdafb24d",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gt\\Daemon\\": "./src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Gt\\Daemon\\Test\\": "./test/unit"
+                }
+            },
+            "description": "Background script execution with cross-platform compatible streaming."
+        },
+        {
+            "name": "phpgt/server",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/home/g105b/Code/PhpGt/Server",
+                "reference": "d8eaf2e4c60d0117fa9f9a32d883092dac0ed712",
+                "shasum": null
+            },
+            "require": {
+                "phpgt/cli": "dev-master"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "8.*"
+            },
+            "bin": [
+                "bin/serve"
             ],
-            "time": "2019-02-23T22:25:08+00:00"
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gt\\Server\\": "./src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Gt\\Test\\Server\\": "./test/unit/"
+                }
+            },
+            "description": "Development HTTP server."
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "phpgt/cli": 20,
+        "phpgt/server": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
