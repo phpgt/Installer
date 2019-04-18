@@ -7,6 +7,10 @@ use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
 
 class CronCommand extends Command {
+	public function run(ArgumentValueList $arguments = null):void {
+
+	}
+
 	public function getName():string {
 		return "cron";
 	}
@@ -33,9 +37,5 @@ class CronCommand extends Command {
 	/** @return  Parameter[] */
 	public function getOptionalParameterList():array {
 		return [];
-	}
-
-	public function run(ArgumentValueList $arguments = null):void {
-		$this->writeLine("TODO: Cron command");
 	}
 }

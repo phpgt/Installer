@@ -6,10 +6,38 @@ use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
-use Gt\Cli\Process\Process;
 use Gt\Cli\Stream;
+use Gt\Daemon\Process;
 
 class ServeCommand extends Command {
+	public function run(ArgumentValueList $arguments = null):void {
+		$gtServeCommand = implode(DIRECTORY_SEPARATOR, [
+			"vendor",
+			"bin",
+			"serve",
+		]);
+
+		if(!file_exists($gtServeCommand)) {
+			$this->writeLine(
+				"The current directory is not a WebEngine application.",
+				Stream::ERROR
+			);
+			return;
+		}
+
+		$cmd = implode(" ", [
+			$gtServeCommand,
+			"--port " . $arguments->get("port", 8080)
+		]);
+
+		$process = new Process($cmd);
+		$process->exec();
+
+		while($process->isRunning()) {
+			$this->output->write($process->getOutput());
+		}
+	}
+
 	public function getName():string {
 		return "serve";
 	}
@@ -42,34 +70,5 @@ class ServeCommand extends Command {
 	/** @return  Parameter[] */
 	public function getOptionalParameterList():array {
 		return [];
-	}
-
-	public function run(ArgumentValueList $arguments = null):void {
-		$gtServeCommand = implode(DIRECTORY_SEPARATOR, [
-			"vendor",
-			"bin",
-			"serve",
-		]);
-
-		if(!file_exists($gtServeCommand)) {
-			$this->writeLine(
-				"The current directory is not a WebEngine application.",
-				Stream::ERROR
-			);
-			return;
-		}
-
-		$cmd = implode(" ", [
-//			$gtServeCommand,
-			"echo one && sleep 1 && echo two && sleep 1 && echo three"
-//			"--port " . $arguments->get("port", 8080)
-		]);
-
-		$process = new Process($cmd);
-		$process->exec();
-
-		while($process->isAlive()) {
-			echo $process->read();
-		}
 	}
 }

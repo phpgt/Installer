@@ -8,6 +8,27 @@ use Gt\Cli\Parameter\Parameter;
 use Gt\Cli\Stream;
 
 class BuildCommand extends Command {
+	public function run(ArgumentValueList $arguments = null):void {
+		$gtBuildCommand = implode(DIRECTORY_SEPARATOR, [
+			"vendor",
+			"bin",
+			"build",
+		]);
+
+		if(!file_exists($gtBuildCommand)) {
+			$this->writeLine(
+				"The current directory is not a WebEngine application.",
+				Stream::ERROR
+			);
+			return;
+		}
+
+		$cmd = implode(" ", [
+			$gtBuildCommand,
+		]);
+		passthru($cmd);
+	}
+
 	public function getName():string {
 		return "build";
 	}
@@ -40,26 +61,5 @@ class BuildCommand extends Command {
 				"w"
 			),
 		];
-	}
-
-	public function run(ArgumentValueList $arguments = null):void {
-		$gtBuildCommand = implode(DIRECTORY_SEPARATOR, [
-			"vendor",
-			"bin",
-			"build",
-		]);
-
-		if(!file_exists($gtBuildCommand)) {
-			$this->writeLine(
-				"The current directory is not a WebEngine application.",
-				Stream::ERROR
-			);
-			return;
-		}
-
-		$cmd = implode(" ", [
-			$gtBuildCommand,
-		]);
-		passthru($cmd);
 	}
 }
