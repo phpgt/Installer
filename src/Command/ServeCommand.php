@@ -9,33 +9,9 @@ use Gt\Cli\Parameter\Parameter;
 use Gt\Cli\Stream;
 use Gt\Daemon\Process;
 
-class ServeCommand extends Command {
+class ServeCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
-		$gtServeCommand = implode(DIRECTORY_SEPARATOR, [
-			"vendor",
-			"bin",
-			"serve",
-		]);
-
-		if(!file_exists($gtServeCommand)) {
-			$this->writeLine(
-				"The current directory is not a WebEngine application.",
-				Stream::ERROR
-			);
-			return;
-		}
-
-		$cmd = implode(" ", [
-			$gtServeCommand,
-			"--port " . $arguments->get("port", 8080)
-		]);
-
-		$process = new Process($cmd);
-		$process->exec();
-
-		while($process->isRunning()) {
-			$this->output->write($process->getOutput());
-		}
+		$this->executeScript($arguments, "serve");
 	}
 
 	public function getName():string {

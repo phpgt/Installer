@@ -7,21 +7,9 @@ use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
 use Gt\Cli\Stream;
 
-class CronCommand extends Command {
+class CronCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
-		$gtCronCommand = implode(DIRECTORY_SEPARATOR, [
-			"vendor",
-			"bin",
-			"cron",
-		]);
-
-		if(!file_exists($gtCronCommand)) {
-			$this->writeLine(
-				"The current directory is not a WebEngine application.",
-				Stream::ERROR
-			);
-			return;
-		}
+		$this->executeScript($arguments, "cron");
 	}
 
 	public function getName():string {
