@@ -5,10 +5,23 @@ use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
+use Gt\Cli\Stream;
 
 class CronCommand extends Command {
 	public function run(ArgumentValueList $arguments = null):void {
+		$gtCronCommand = implode(DIRECTORY_SEPARATOR, [
+			"vendor",
+			"bin",
+			"cron",
+		]);
 
+		if(!file_exists($gtCronCommand)) {
+			$this->writeLine(
+				"The current directory is not a WebEngine application.",
+				Stream::ERROR
+			);
+			return;
+		}
 	}
 
 	public function getName():string {

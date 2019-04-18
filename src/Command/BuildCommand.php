@@ -6,9 +6,23 @@ use Gt\Cli\Command\Command;
 use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
 use Gt\Cli\Stream;
+use Gt\Daemon\Process;
 
 class BuildCommand extends Command {
 	public function run(ArgumentValueList $arguments = null):void {
+		$argString = "";
+
+		foreach($arguments as $arg) {
+			$argString .= " ";
+			$argString .= "--";
+			$argString .= $arg->getKey();
+
+			$value = $arg->get();
+			if(!empty($value)) {
+				$argString .= " ";
+				$argString .= $value;
+			}
+		}
 		$gtBuildCommand = implode(DIRECTORY_SEPARATOR, [
 			"vendor",
 			"bin",
@@ -23,10 +37,28 @@ class BuildCommand extends Command {
 			return;
 		}
 
+		if(!empty($argString)) {
+			$gtBuildCommand .= $argString;
+		}
+
 		$cmd = implode(" ", [
 			$gtBuildCommand,
 		]);
-		passthru($cmd);
+		$process = new Process($cmd);
+		$process->exec();
+
+		do {
+			$output = $process->getOutput();
+			$errorOutput = $process->getErrorOutput();
+
+			if(!empty($output)) {
+				$this->write($output);
+			}
+			if(!empty($errorOutput)) {
+				$this->write($errorOutput, Stream::ERROR);
+			}
+		}
+		while($process->isRunning());
 	}
 
 	public function getName():string {
