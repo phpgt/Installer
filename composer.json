@@ -15,7 +15,10 @@
 	"require": {
 		"php": ">=7.2",
 		"phpgt/cli": "dev-master",
-		"phpgt/daemon": "dev-master"
+		"phpgt/daemon": "dev-master",
+		"phpgt/cron": "dev-master",
+		"phpgt/build": "dev-master",
+		"phpgt/server": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {

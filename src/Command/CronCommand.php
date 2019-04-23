@@ -17,26 +17,31 @@ class CronCommand extends AbstractWebEngineCommand {
 	}
 
 	public function getDescription():string {
-		return "Run any cron jobs that are scheduled to execute now";
+		$baseCommand = new \Gt\Cron\Command\RunCommand();
+		return $baseCommand->getDescription();
 	}
 
 	/** @return  NamedParameter[] */
 	public function getRequiredNamedParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Cron\Command\RunCommand();
+		return $baseCommand->getRequiredNamedParameterList();
 	}
 
 	/** @return  NamedParameter[] */
 	public function getOptionalNamedParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Cron\Command\RunCommand();
+		return $baseCommand->getOptionalNamedParameterList();
 	}
 
 	/** @return  Parameter[] */
 	public function getRequiredParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Cron\Command\RunCommand();
+		return $baseCommand->getRequiredParameterList();
 	}
 
 	/** @return  Parameter[] */
 	public function getOptionalParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Cron\Command\RunCommand();
+		return $baseCommand->getOptionalParameterList();
 	}
 }
