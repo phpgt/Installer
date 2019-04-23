@@ -40,7 +40,16 @@ abstract class AbstractWebEngineCommand extends Command {
 				$scriptName,
 			]);
 
-			if(!file_exists($gtCommand)) {
+			$spacePos = strpos($gtCommand, " ");
+			$gtCommandWithoutArguments = $gtCommand;
+			if($spacePos > 0) {
+				$gtCommandWithoutArguments = substr(
+					$gtCommand,
+					0,
+					$spacePos
+				);
+			}
+			if(!file_exists($gtCommandWithoutArguments)) {
 				$this->writeLine(
 					"The current directory is not a WebEngine application.",
 					Stream::ERROR
@@ -52,8 +61,17 @@ abstract class AbstractWebEngineCommand extends Command {
 				$gtCommand .= $argString;
 			}
 
+			$friendlyScriptName = $gtCommandWithoutArguments;
+			$slashPos = strrpos($gtCommandWithoutArguments, "/");
+			if($slashPos > 0) {
+				$friendlyScriptName = substr(
+					$gtCommandWithoutArguments,
+					$slashPos + 1
+				);
+			}
+
 			$process = new Process($gtCommand);
-			$processPool->add($scriptName, $process);
+			$processPool->add($friendlyScriptName, $process);
 		}
 
 		$processPool->exec();

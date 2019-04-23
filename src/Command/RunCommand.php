@@ -6,27 +6,17 @@ use Gt\Cli\Command\Command;
 use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
 use Gt\Cli\Stream;
+use Gt\Daemon\Pool;
+use Gt\Daemon\Process;
 
-class RunCommand extends Command {
+class RunCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
-		$gtRunCommand = implode(DIRECTORY_SEPARATOR, [
-			"vendor",
-			"bin",
-			"gt-run",
-		]);
-
-		if(!file_exists($gtRunCommand)) {
-			$this->writeLine(
-				"The current directory is not a WebEngine application.",
-				Stream::ERROR
-			);
-			return;
-		}
-
-		$cmd = implode(" ", [
-			$gtRunCommand,
-		]);
-		passthru($cmd);
+		$this->executeScript(
+			$arguments,
+			"serve",
+			"build --default vendor/phpgt/webengine/build.default.json --watch",
+			"cron --watch"
+		);
 	}
 
 	public function getName():string {
