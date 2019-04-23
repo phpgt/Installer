@@ -19,32 +19,31 @@ class ServeCommand extends AbstractWebEngineCommand {
 	}
 
 	public function getDescription():string {
-		return "Run a local development HTTP server";
+		$baseCommand = new \Gt\Server\Command\StartCommand();
+		return $baseCommand->getDescription();
 	}
 
 	/** @return  NamedParameter[] */
 	public function getRequiredNamedParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Server\Command\StartCommand();
+		return $baseCommand->getRequiredNamedParameterList();
 	}
 
 	/** @return  NamedParameter[] */
 	public function getOptionalNamedParameterList():array {
-		return [
-			new Parameter(
-				true,
-				"port",
-				"p"
-			),
-		];
+		$baseCommand = new \Gt\Server\Command\StartCommand();
+		return $baseCommand->getOptionalNamedParameterList();
 	}
 
 	/** @return  Parameter[] */
 	public function getRequiredParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Server\Command\StartCommand();
+		return $baseCommand->getRequiredParameterList();
 	}
 
 	/** @return  Parameter[] */
 	public function getOptionalParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Server\Command\StartCommand();
+		return $baseCommand->getOptionalParameterList();
 	}
 }
