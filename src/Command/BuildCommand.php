@@ -18,32 +18,31 @@ class BuildCommand extends AbstractWebEngineCommand {
 	}
 
 	public function getDescription():string {
-		return "Build the client-side files";
+		$baseCommand = new \Gt\Build\Command\RunCommand();
+		return $baseCommand->getDescription();
 	}
 
 	/** @return  NamedParameter[] */
 	public function getRequiredNamedParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Build\Command\RunCommand();
+		return $baseCommand->getRequiredNamedParameterList();
 	}
 
 	/** @return  NamedParameter[] */
 	public function getOptionalNamedParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Build\Command\RunCommand();
+		return $baseCommand->getOptionalNamedParameterList();
 	}
 
 	/** @return  Parameter[] */
 	public function getRequiredParameterList():array {
-		return [];
+		$baseCommand = new \Gt\Build\Command\RunCommand();
+		return $baseCommand->getRequiredParameterList();
 	}
 
 	/** @return  Parameter[] */
 	public function getOptionalParameterList():array {
-		return [
-			new Parameter(
-				false,
-				"watch",
-				"w"
-			),
-		];
+		$baseCommand = new \Gt\Build\Command\RunCommand();
+		return $baseCommand->getOptionalParameterList();
 	}
 }
