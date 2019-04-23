@@ -1,6 +1,7 @@
 <?php
 namespace Gt\Installer\Command;
 
+use Gt\Cli\Argument\Argument;
 use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 use Gt\Cli\Stream;
@@ -15,9 +16,13 @@ abstract class AbstractWebEngineCommand extends Command {
 		$argString = "";
 
 		foreach($arguments as $arg) {
-			$argString .= " ";
-			$argString .= "--";
-			$argString .= $arg->getKey();
+			$key = $arg->getKey();
+
+			if($key !== Argument::USER_DATA) {
+				$argString .= " ";
+				$argString .= "--";
+				$argString .= $key;
+			}
 
 			$value = $arg->get();
 			if(!empty($value)) {
