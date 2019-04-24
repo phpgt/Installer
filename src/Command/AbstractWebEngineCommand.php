@@ -88,7 +88,5 @@ abstract class AbstractWebEngineCommand extends Command {
 			}
 		}
 		while($processPool->numRunning() > 0);
-
-		$this->writeLine("All processes completed.");
 	}
 }
