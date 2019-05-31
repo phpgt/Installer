@@ -11,7 +11,7 @@ class RunCommand extends AbstractWebEngineCommand {
 			$arguments,
 			"serve",
 			"build --default vendor/phpgt/webengine/build.default.json --watch",
-			"cron --watch"
+			"cron --now --watch"
 		);
 	}
 
