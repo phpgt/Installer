@@ -1,24 +1,17 @@
 {
-	"repositories": [
-		{
-			"type": "path",
-			"url": "/home/g105b/Code/PhpGt/*"
-		}
-	],
-        "minimum-stability": "dev",
-
 	"name": "phpgt/installer",
 	"description": "Installs the `gt` commands for easy management of projects.",
 	"bin": [
 		"bin/gt"
 	],
+
 	"require": {
 		"php": ">=7.2",
-		"phpgt/cli": "dev-master",
-		"phpgt/daemon": "dev-master",
-		"phpgt/cron": "dev-master",
-		"phpgt/build": "dev-master",
-		"phpgt/server": "dev-master"
+		"phpgt/cli": "*",
+		"phpgt/daemon": "*",
+		"phpgt/cron": "*",
+		"phpgt/build": "*",
+		"phpgt/server": "*"
 	},
 	"autoload": {
 		"psr-4": {
