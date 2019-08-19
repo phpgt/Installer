@@ -86,6 +86,8 @@ abstract class AbstractWebEngineCommand extends Command {
 			if(strlen(trim($errorOutput)) > 0) {
 				$this->write($errorOutput, Stream::ERROR);
 			}
+
+			usleep(100000);
 		}
 		while($processPool->numRunning() > 0);
 	}
