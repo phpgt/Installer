@@ -24,6 +24,7 @@ $app = new \Gt\Cli\Application(
 	new RunCommand(),
 	new BuildCommand(),
 	new CronCommand(),
-	new ServeCommand()
+	new ServeCommand(),
+	new MigrateCommand()
 );
 $app->run();
