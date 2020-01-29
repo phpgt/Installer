@@ -11,45 +11,20 @@ use Gt\Daemon\Process;
 abstract class AbstractWebEngineCommand extends Command {
 	public function executeScript(
 		ArgumentValueList $arguments = null,
-		string...$scriptsToRun
+		array...$scriptsToRun
 	):void {
-		$argString = "";
-
-		foreach($arguments as $arg) {
-			$key = $arg->getKey();
-
-			if($key !== Argument::USER_DATA) {
-				$argString .= " ";
-				$argString .= "--";
-				$argString .= $key;
-			}
-
-			$value = $arg->get();
-			if(!empty($value)) {
-				$argString .= " ";
-				$argString .= $value;
-			}
-		}
-
 		$processPool = new Pool();
 
-		foreach($scriptsToRun as $scriptName) {
+		foreach($scriptsToRun as $scriptParts) {
+			$scriptName = array_shift($scriptParts);
+
 			$gtCommand = implode(DIRECTORY_SEPARATOR, [
 				"vendor",
 				"bin",
 				$scriptName,
 			]);
 
-			$spacePos = strpos($gtCommand, " ");
-			$gtCommandWithoutArguments = $gtCommand;
-			if($spacePos > 0) {
-				$gtCommandWithoutArguments = substr(
-					$gtCommand,
-					0,
-					$spacePos
-				);
-			}
-			if(!file_exists($gtCommandWithoutArguments)) {
+			if(!file_exists($gtCommand)) {
 				$this->writeLine(
 					"The current directory is not a WebEngine application.",
 					Stream::ERROR
@@ -57,20 +32,16 @@ abstract class AbstractWebEngineCommand extends Command {
 				return;
 			}
 
-			if(!empty($argString)) {
-				$gtCommand .= $argString;
-			}
-
-			$friendlyScriptName = $gtCommandWithoutArguments;
-			$slashPos = strrpos($gtCommandWithoutArguments, "/");
+			$friendlyScriptName = $gtCommand;
+			$slashPos = strrpos($friendlyScriptName, "/");
 			if($slashPos > 0) {
 				$friendlyScriptName = substr(
-					$gtCommandWithoutArguments,
+					$friendlyScriptName,
 					$slashPos + 1
 				);
 			}
 
-			$process = new Process($gtCommand);
+			$process = new Process($gtCommand, ...$scriptParts);
 			$processPool->add($friendlyScriptName, $process);
 		}
 

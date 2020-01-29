@@ -31,7 +31,7 @@ class CreateCommand extends Command {
 			"Using blueprint: $blueprint"
 		);
 
-		$process = new Process("composer create-project --remove-vcs webengine-blueprints/$blueprint:dev-master $appDir");
+		$process = new Process("composer", "create-project", "--remove-vcs", "webengine-blueprints/$blueprint:dev-master", $appDir);
 		$process->exec();
 
 		$this->write("Installing");

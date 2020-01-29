@@ -4,28 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76fb22ab9f654deb367b023d8f2eea71",
+    "content-hash": "e30c9f7cea66470b190f9c5c2dab9cc4",
     "packages": [
         {
             "name": "composer/semver",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "46d9139568ccb8d9e7cdd4539cab7347568a5e2e"
+                "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/46d9139568ccb8d9e7cdd4539cab7347568a5e2e",
-                "reference": "46d9139568ccb8d9e7cdd4539cab7347568a5e2e",
+                "url": "https://api.github.com/repos/composer/semver/zipball/c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
+                "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.2 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.5 || ^5.0.5",
-                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
+                "phpunit/phpunit": "^4.5 || ^5.0.5"
             },
             "type": "library",
             "extra": {
@@ -66,7 +65,7 @@
                 "validation",
                 "versioning"
             ],
-            "time": "2019-03-19T17:25:45+00:00"
+            "time": "2020-01-13T12:06:48+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
@@ -124,22 +123,22 @@
         },
         {
             "name": "phpgt/build",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Build.git",
-                "reference": "2759c82cefa80d9ca13ce14090a091b6dd76798a"
+                "reference": "1c88657e01e3fed1df7df50c1f9df825290d1250"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Build/zipball/2759c82cefa80d9ca13ce14090a091b6dd76798a",
-                "reference": "2759c82cefa80d9ca13ce14090a091b6dd76798a",
+                "url": "https://api.github.com/repos/PhpGt/Build/zipball/1c88657e01e3fed1df7df50c1f9df825290d1250",
+                "reference": "1c88657e01e3fed1df7df50c1f9df825290d1250",
                 "shasum": ""
             },
             "require": {
                 "composer/semver": "1.*",
                 "ext-json": "*",
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "phpgt/cli": "*",
                 "webmozart/glob": "4.*"
             },
@@ -160,26 +159,26 @@
                 "MIT"
             ],
             "description": "Client-side build system for PHP projects.",
-            "time": "2019-06-19T19:06:54+00:00"
+            "time": "2020-01-16T09:20:54+00:00"
         },
         {
             "name": "phpgt/cli",
-            "version": "v1.2.1",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Cli.git",
-                "reference": "a0d3d616483fe10f9c7a66064234d680a8dd9f6b"
+                "reference": "3432e0a31080bcc40e690e049d6396c9f96cac09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/a0d3d616483fe10f9c7a66064234d680a8dd9f6b",
-                "reference": "a0d3d616483fe10f9c7a66064234d680a8dd9f6b",
+                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/3432e0a31080bcc40e690e049d6396c9f96cac09",
+                "reference": "3432e0a31080bcc40e690e049d6396c9f96cac09",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=7.2",
-                "phpgt/daemon": "1.*"
+                "php": ">=7.4",
+                "phpgt/daemon": "*"
             },
             "require-dev": {
                 "phpunit/phpunit": "8.*"
@@ -207,7 +206,7 @@
                 "terminal",
                 "webengine"
             ],
-            "time": "2019-06-14T13:44:57+00:00"
+            "time": "2020-01-03T15:42:11+00:00"
         },
         {
             "name": "phpgt/cron",
@@ -246,20 +245,20 @@
         },
         {
             "name": "phpgt/daemon",
-            "version": "v1.0.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Daemon.git",
-                "reference": "39765ffaf95c1cfd7c03dc00eaa4d4ae0fb7a3ed"
+                "reference": "03cc376ec1969530b4478f8278732eb3f97dd09e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Daemon/zipball/39765ffaf95c1cfd7c03dc00eaa4d4ae0fb7a3ed",
-                "reference": "39765ffaf95c1cfd7c03dc00eaa4d4ae0fb7a3ed",
+                "url": "https://api.github.com/repos/PhpGt/Daemon/zipball/03cc376ec1969530b4478f8278732eb3f97dd09e",
+                "reference": "03cc376ec1969530b4478f8278732eb3f97dd09e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=7.4"
             },
             "require-dev": {
                 "phpunit/phpunit": "8.*"
@@ -272,23 +271,24 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Background script execution with cross-platform compatible streaming.",
-            "time": "2019-06-14T13:38:28+00:00"
+            "time": "2020-01-03T14:17:34+00:00"
         },
         {
             "name": "phpgt/server",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Server.git",
-                "reference": "8e75ec38de6d14ce1c393441f3853260cb52f455"
+                "reference": "b783ab4b972b83d44bcc24261d8e4669d1c25795"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Server/zipball/8e75ec38de6d14ce1c393441f3853260cb52f455",
-                "reference": "8e75ec38de6d14ce1c393441f3853260cb52f455",
+                "url": "https://api.github.com/repos/PhpGt/Server/zipball/b783ab4b972b83d44bcc24261d8e4669d1c25795",
+                "reference": "b783ab4b972b83d44bcc24261d8e4669d1c25795",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.4",
                 "phpgt/cli": "*"
             },
             "require-dev": {
@@ -305,20 +305,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Development HTTP server.",
-            "time": "2019-06-19T09:17:37+00:00"
+            "time": "2020-01-03T17:34:52+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.12.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "550ebaac289296ce228a706d0867afc34687e3f4"
+                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/550ebaac289296ce228a706d0867afc34687e3f4",
-                "reference": "550ebaac289296ce228a706d0867afc34687e3f4",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
+                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
                 "shasum": ""
             },
             "require": {
@@ -330,7 +330,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -363,35 +363,33 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2019-08-06T08:03:45+00:00"
+            "time": "2019-11-27T13:56:44+00:00"
         },
         {
             "name": "webmozart/assert",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "88e6d84706d09a236046d686bbea96f07b3a34f4"
+                "reference": "573381c0a64f155a0d9a23f4b0c797194805b925"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/88e6d84706d09a236046d686bbea96f07b3a34f4",
-                "reference": "88e6d84706d09a236046d686bbea96f07b3a34f4",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/573381c0a64f155a0d9a23f4b0c797194805b925",
+                "reference": "573381c0a64f155a0d9a23f4b0c797194805b925",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.3 || ^7.0",
                 "symfony/polyfill-ctype": "^1.8"
             },
+            "conflict": {
+                "vimeo/psalm": "<3.6.0"
+            },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.36 || ^7.5.13"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Webmozart\\Assert\\": "src/"
@@ -413,7 +411,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2019-08-24T08:43:50+00:00"
+            "time": "2019-11-24T13:36:37+00:00"
         },
         {
             "name": "webmozart/glob",
@@ -516,7 +514,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2"
+        "php": ">=7.4"
     },
     "platform-dev": []
 }

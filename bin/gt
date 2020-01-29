@@ -6,6 +6,7 @@ use Gt\Cli\Argument\ArgumentList;
 use Gt\Installer\Command\BuildCommand;
 use Gt\Installer\Command\CreateCommand;
 use Gt\Installer\Command\CronCommand;
+use Gt\Installer\Command\MigrateCommand;
 use Gt\Installer\Command\RunCommand;
 use Gt\Installer\Command\ServeCommand;
 

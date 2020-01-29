@@ -9,9 +9,9 @@ class RunCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
 		$this->executeScript(
 			$arguments,
-			"serve",
-			"build --default vendor/phpgt/webengine/build.default.json --watch",
-			"cron --now --watch"
+			["serve"],
+			["build", "--default", "vendor/phpgt/webengine/build.default.json", "--watch"],
+			["cron", "--now", "--watch"]
 		);
 	}
 

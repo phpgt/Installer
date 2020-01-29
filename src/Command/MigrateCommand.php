@@ -9,7 +9,7 @@ class MigrateCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
 		$this->executeScript(
 			$arguments,
-			"db-migrate"
+			["db-migrate"]
 		);
 	}
 
