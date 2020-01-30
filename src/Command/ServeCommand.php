@@ -11,7 +11,7 @@ use Gt\Daemon\Process;
 
 class ServeCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
-		$this->executeScript($arguments, "serve");
+		$this->executeScript($arguments, ["serve"]);
 	}
 
 	public function getName():string {

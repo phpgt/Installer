@@ -11,45 +11,41 @@ use Gt\Daemon\Process;
 abstract class AbstractWebEngineCommand extends Command {
 	public function executeScript(
 		ArgumentValueList $arguments = null,
-		string...$scriptsToRun
+		array...$scriptsToRun
 	):void {
-		$argString = "";
+		$stringArgumentArray = [];
+//
+//		foreach($arguments as $arg) {
+//			$key = $arg->getKey();
+//
+//			if($key !== Argument::USER_DATA) {
+//				$stringArgumentArray .= "--";
+//				$stringArgumentArray .= $key;
+//			}
+//
+//			$value = $arg->get();
+//			if(!empty($value)) {
+//				$stringArgumentArray .= " ";
+//				$stringArgumentArray .= $value;
+//			}
+//		}
 
-		foreach($arguments as $arg) {
-			$key = $arg->getKey();
-
-			if($key !== Argument::USER_DATA) {
-				$argString .= " ";
-				$argString .= "--";
-				$argString .= $key;
-			}
-
-			$value = $arg->get();
-			if(!empty($value)) {
-				$argString .= " ";
-				$argString .= $value;
-			}
-		}
+//		var_dump($arguments);die();
 
 		$processPool = new Pool();
 
-		foreach($scriptsToRun as $scriptName) {
-			$gtCommand = implode(DIRECTORY_SEPARATOR, [
+		foreach($scriptsToRun as $scriptParts) {
+			/** @var string[] $scriptParts */
+
+			$scriptName = $scriptParts[0];
+
+			$scriptParts[0] = implode(DIRECTORY_SEPARATOR, [
 				"vendor",
 				"bin",
-				$scriptName,
+				$scriptParts[0],
 			]);
 
-			$spacePos = strpos($gtCommand, " ");
-			$gtCommandWithoutArguments = $gtCommand;
-			if($spacePos > 0) {
-				$gtCommandWithoutArguments = substr(
-					$gtCommand,
-					0,
-					$spacePos
-				);
-			}
-			if(!file_exists($gtCommandWithoutArguments)) {
+			if(!file_exists($scriptParts[0])) {
 				$this->writeLine(
 					"The current directory is not a WebEngine application.",
 					Stream::ERROR
@@ -57,21 +53,8 @@ abstract class AbstractWebEngineCommand extends Command {
 				return;
 			}
 
-			if(!empty($argString)) {
-				$gtCommand .= $argString;
-			}
-
-			$friendlyScriptName = $gtCommandWithoutArguments;
-			$slashPos = strrpos($gtCommandWithoutArguments, "/");
-			if($slashPos > 0) {
-				$friendlyScriptName = substr(
-					$gtCommandWithoutArguments,
-					$slashPos + 1
-				);
-			}
-
-			$process = new Process($gtCommand);
-			$processPool->add($friendlyScriptName, $process);
+			$process = new Process(...$scriptParts);
+			$processPool->add($scriptName, $process);
 		}
 
 		$processPool->exec();

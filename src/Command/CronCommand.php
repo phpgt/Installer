@@ -9,7 +9,7 @@ use Gt\Cli\Stream;
 
 class CronCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
-		$this->executeScript($arguments, "cron");
+		$this->executeScript($arguments, ["cron"]);
 	}
 
 	public function getName():string {
