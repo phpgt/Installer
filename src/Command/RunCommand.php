@@ -7,9 +7,11 @@ use Gt\Cli\Parameter\Parameter;
 
 class RunCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
+		$port = $arguments->get("port", 8080);
+
 		$this->executeScript(
 			$arguments,
-			["serve"],
+			["serve", "--port", $port],
 			["build", "--default", "vendor/phpgt/webengine/build.default.json", "--watch"],
 			["cron", "--now", "--watch"]
 		);
