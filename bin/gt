@@ -2,6 +2,7 @@
 <?php
 namespace Gt\Installer;
 
+use Gt\Cli\Application;
 use Gt\Cli\Argument\ArgumentList;
 use Gt\Installer\Command\BuildCommand;
 use Gt\Installer\Command\CreateCommand;
@@ -18,7 +19,7 @@ foreach([ __DIR__ . "/../../..", __DIR__ . "/../vendor" ] as $vendor) {
 	}
 }
 
-$app = new \Gt\Cli\Application(
+$app = new Application(
 	"PHP.Gt Command Line Interface",
 	new ArgumentList(...$argv),
 	new CreateCommand(),
