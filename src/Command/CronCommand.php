@@ -2,10 +2,8 @@
 namespace Gt\Installer\Command;
 
 use Gt\Cli\Argument\ArgumentValueList;
-use Gt\Cli\Command\Command;
 use Gt\Cli\Parameter\NamedParameter;
 use Gt\Cli\Parameter\Parameter;
-use Gt\Cli\Stream;
 
 class CronCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {

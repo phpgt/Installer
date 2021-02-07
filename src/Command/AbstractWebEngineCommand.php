@@ -1,7 +1,6 @@
 <?php
 namespace Gt\Installer\Command;
 
-use Gt\Cli\Argument\Argument;
 use Gt\Cli\Argument\ArgumentValueList;
 use Gt\Cli\Command\Command;
 use Gt\Cli\Stream;
@@ -13,25 +12,6 @@ abstract class AbstractWebEngineCommand extends Command {
 		ArgumentValueList $arguments = null,
 		array...$scriptsToRun
 	):void {
-		$stringArgumentArray = [];
-//
-//		foreach($arguments as $arg) {
-//			$key = $arg->getKey();
-//
-//			if($key !== Argument::USER_DATA) {
-//				$stringArgumentArray .= "--";
-//				$stringArgumentArray .= $key;
-//			}
-//
-//			$value = $arg->get();
-//			if(!empty($value)) {
-//				$stringArgumentArray .= " ";
-//				$stringArgumentArray .= $value;
-//			}
-//		}
-
-//		var_dump($arguments);die();
-
 		$processPool = new Pool();
 
 		foreach($scriptsToRun as $scriptParts) {

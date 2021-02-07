@@ -8,7 +8,7 @@ use Gt\Cli\Parameter\Parameter;
 use Gt\Cli\Stream;
 use Gt\Daemon\Process;
 
-class CreateCommand extends Command {
+class CreateCommand extends AbstractWebEngineCommand {
 	public function run(ArgumentValueList $arguments = null):void {
 		$cwd = getcwd();
 		$appDir = implode(DIRECTORY_SEPARATOR, [
