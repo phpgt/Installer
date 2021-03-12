@@ -10,9 +10,14 @@ class RunCommand extends AbstractWebEngineCommand {
 		$port = $arguments->get("port", 8080);
 		$bind = $arguments->get("bind", "0.0.0.0");
 
+		$serveScript = ["serve", "--port", $port, "--bind", $bind];
+		if($arguments->contains("debug")) {
+			array_push($serveScript, "--debug");
+		}
+
 		$this->executeScript(
 			$arguments,
-			["serve", "--port", $port, "--bind", $bind],
+			$serveScript,
 			["build", "--default", "vendor/phpgt/webengine/build.default.json", "--watch"],
 			["cron", "--now", "--watch"]
 		);
@@ -33,7 +38,9 @@ class RunCommand extends AbstractWebEngineCommand {
 
 	/** @return  NamedParameter[] */
 	public function getOptionalNamedParameterList():array {
-		return [];
+		return [
+			new NamedParameter("debug")
+		];
 	}
 
 	/** @return  Parameter[] */
