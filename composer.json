@@ -6,12 +6,7 @@
 	],
 
 	"require": {
-		"php": ">=8.0",
-		"phpgt/cli": "*",
-		"phpgt/daemon": "*",
-		"phpgt/cron": "*",
-		"phpgt/build": "*",
-		"phpgt/server": "*"
+		"php": ">=8.0"
 	},
 	"autoload": {
 		"psr-4": {
