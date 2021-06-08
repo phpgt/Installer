@@ -110,7 +110,7 @@ echo "Looks like you have PHP $php_version and Composer $composer_version instal
 echo "You're ready to install PHP.Gt/CliTools globally using Composer."
 echo "Press enter to continue, or Ctrl+C to cancel..."
 read -r
-composer global require phpgt/installer
+composer global require phpgt/clitools
 
 echo
 echo -n "Composer has completed installing PHP.Gt/CliTools successfully "
