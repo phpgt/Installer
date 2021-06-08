@@ -1,7 +1,7 @@
-Installs PHP.Gt/CliTools for gt command access.
-===============================================
+Installs PHP.Gt/CliTools for `gt` command access.
+=================================================
 
-One of the main notions of development within PHP.Gt is to remove any barriers that might prevent someone from productively building a prototype. This repository intends to remove the first barrier to getting started by providing a single convenience script to install access to the `gt` commands exposed by [PHP.Gt/CliTools][cli-tools].
+One of the main notions of development within PHP.Gt is to remove any barriers that might prevent someone from productively building a prototype. This repository intends to remove the first barrier to getting started with WebEngine development by providing a single convenience script to install access to the `gt` commands exposed by [PHP.Gt/CliTools][cli-tools].
 
 To run the installer, paste the following into your terminal shell:
 

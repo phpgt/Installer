@@ -1,6 +1,6 @@
 {
 	"name": "phpgt/installer",
-	"description": "Installs the `gt` commands for easy management of projects.",
+	"description": "Install PHP.Gt/CliTools for `gt` command access.",
 	"bin": [
 		"bin/gt"
 	],
