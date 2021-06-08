@@ -55,6 +55,7 @@ then
 		echo "Type 'gt help' for more information."
 		echo "To make sure you're running the most up-to-date version, type 'gt update'."
 		echo "For help, please visit: https://www.php.gt/clitools/gt-command"
+		echo
 		echo "Have fun!"
 		exit
 	else
@@ -82,32 +83,47 @@ then
 	composer_version="$(composer --version | cut -d" " -f 3 | cut -d"." -f 1)"
 fi
 
-if (( php_version >= 8 )) && (( composer_version >= 4 ))
+if (( php_version < 1 ))
 then
-	echo "Looks like you have PHP $php_version and Composer $composer_version installed - great!"
-	echo "Press any key to require the PHP.Gt/CliTools globally using Composer..."
-	read -r
-	composer global require phpgt/installer
+	echo "Looks like you don't have PHP installed on your computer."
+elif (( php_version < 8 ))
+then
+	echo "Looks like you have PHP $php_version installed, but you need PHP 8."
+fi
 
+if (( php_version < 8 ))
+then
+	echo "To install the latest version of PHP, please follow this guide:"
+	echo "https://www.php.gt/webengine/environment-setup#php"
+	exit 101
+fi
+
+if (( composer_version < 1 ))
+then
+	echo "You've got PHP $php_version installed, but you don't have Composer."
+	echo "To install the latest version of Composer, please follow this guide:"
+	echo "https://www.php.gt/webengine/environment-setup#composer"
+	exit 101
+fi
+
+echo "Looks like you have PHP $php_version and Composer $composer_version installed - great!"
+echo "You're ready to install PHP.Gt/CliTools globally using Composer."
+echo "Press enter to continue, or Ctrl+C to cancel..."
+read -r
+composer global require phpgt/installer
+
+echo
+echo -n "Composer has completed installing PHP.Gt/CliTools successfully "
+
+if command_exists gt
+then
+	echo "and you've now got the 'gt' command available in your terminal!"
 	echo
-	echo -n "Composer has completed installing PHP.Gt/CliTools successfully "
-
-	if command_exists gt
-	then
-		echo "and you've now got the 'gt' command available in your terminal!"
-		echo
-		echo "Type 'gt help' or visit https://www.php.gt/clitools/gt-command for more information."
-		echo
-	else
-		echo "but you need to add Composer's global directory to your PATH."
-		echo
-		echo "For a tutorial, please visit https://www.php.gt/clitools/composer-path"
-		echo
-	fi
-
-	exit
+	echo "Type 'gt help' or visit https://www.php.gt/clitools/gt-command for more information."
+	echo
 else
-	echo "For PHP.Gt to work, you need at least PHP 8 and Composer installed on your computer, but it doesn't look like you have these installed yet."
-	echo "Here's a guide that helps you get set up, please visit:"
-	echo "https://www.php.gt/webengine/environment-setup"
+	echo "but before you can run the 'gt' command, you need to add Composer's global directory to your PATH."
+	echo
+	echo "For a tutorial, please visit https://www.php.gt/clitools/composer-path"
+	echo
 fi
