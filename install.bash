@@ -110,7 +110,7 @@ echo "Looks like you have PHP $php_version and Composer $composer_version instal
 echo "You're ready to install PHP.Gt/GtCommand globally using Composer."
 echo "Press enter to continue, or Ctrl+C to cancel..."
 read -r
-composer global require phpgt/gtcommand
+composer global require phpgt/gtcommand dev-master@dev
 
 echo
 echo -n "Composer has completed installing PHP.Gt/GtCommand successfully "
@@ -118,12 +118,17 @@ echo -n "Composer has completed installing PHP.Gt/GtCommand successfully "
 if command_exists gt
 then
 	echo "and you've now got the 'gt' command available in your terminal!"
-	echo
 	echo "Type 'gt help' or visit https://www.php.gt/gtcommand/usage for more information."
 	echo
 else
 	echo "but before you can run the 'gt' command, you need to add Composer's global directory to your PATH."
-	echo
 	echo "For a tutorial, please visit https://www.php.gt/gtcommand/composer-path"
+	echo
+fi
+
+if ! command_exists sass || ! command_exists webpack
+then
+	echo "You might want to also install 'sass' and 'webpack' for advanced client-side development."
+	echo "For a tutorial, please visit https://www.php.gt/build/install-sass-webpack"
 	echo
 fi
