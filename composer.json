@@ -7,11 +7,11 @@
 
 	"require": {
 		"php": ">=8.0",
-		"phpgt/cli": "*",
-		"phpgt/daemon": "*",
-		"phpgt/cron": "*",
-		"phpgt/build": "*",
-		"phpgt/server": "*"
+		"phpgt/cli": "^v1.3",
+		"phpgt/daemon": "^v1.1",
+		"phpgt/cron": "^1.0",
+		"phpgt/build": "^1.2",
+		"phpgt/server": "^1.1"
 	},
 	"autoload": {
 		"psr-4": {
