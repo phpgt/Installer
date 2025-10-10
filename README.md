@@ -11,3 +11,9 @@ With Composer installed, run `composer global require phpgt/installer` to global
 
 For the `gt` command to be available globally, ensure that your `~/.config/composer/vendor/bin` directory is in your PATH (or on Windows, `C:\%HOMEPATH%\AppData\Roaming\Composer\vendor\bin`).
 
+
+# Proudly sponsored by
+
+[JetBrains Open Source sponsorship program](https://www.jetbrains.com/community/opensource/)
+
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://www.jetbrains.com/community/opensource/)
