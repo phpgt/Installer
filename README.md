@@ -1,13 +1,50 @@
-Command line tools for installing WebEngine.
-============================================
+Command line installer for `gt`
+===============================
 
-One of the main notions of development within PHP.Gt is to remove any barriers that might prevent someone from productively building a prototype. This repository intends to remove all barriers by providing a single `gt` script that contains all of the setup commands to get you going on new and existing projects.
+This repository hosts the install script served at:
 
-Note: this is a totally optional part of PHP.Gt/WebEngine. You can continue to set up WebEngine projects manually without losing any functionality.
+- `https://php.gt/install`
 
-PHP.Gt relies on Composer as the installation medium. Using Composer ensures you have the correct versions of PHP and extensions installed.
+The installer sets up a `gt` command on Linux/macOS shells using either native PHP+Composer or Docker.
 
-With Composer installed, run `composer global require phpgt/installer` to globally install the interface required for creating new WebEngine applications. This will make the `gt` command available to your terminal, which includes the helper commands required for creating new projects and running them.
+Quick install:
 
-For the `gt` command to be available globally, ensure that your `~/.config/composer/vendor/bin` directory is in your PATH (or on Windows, `C:\%HOMEPATH%\AppData\Roaming\Composer\vendor\bin`).
+- `curl https://php.gt/install | sh`
 
+Verbose output:
+
+- `curl https://php.gt/install | sh -s -- --verbose`
+
+Force shell profile selection:
+
+- `curl https://php.gt/install | sh -s -- --shell bash`
+
+The `gt` functionality is implemented in [phpgt/GtCommand](https://github.com/phpgt/GtCommand) and installed as Composer package `phpgt/gtcommand`.
+
+How the installer works
+-----------------------
+
+1. Preflight checks run first (before prompts):
+   - Native requirements: `php >= 8.4`, `curl`, and either archive support (`unzip`/`7z`/PHP `zip`) or `git`.
+   - Docker availability (`docker` command).
+2. If neither native nor Docker is viable, the installer explains missing requirements, suggests package-manager install commands, and links to:
+   - `https://php.gt/docs/installer/environments`
+3. If both paths are viable, user chooses `native` or `docker`. If only one is viable, it is selected automatically.
+4. Installer asks which shell profile to update (`bash`, `zsh`, `sh`), defaulting from:
+   - `--shell` override, then parent-process inference, then `$SHELL`.
+5. Native path:
+   - Uses existing `composer` if present, otherwise downloads `composer-stable.phar`.
+   - Installs `phpgt/gtcommand` with Composer global require.
+6. Docker path:
+   - Uses `composer:2` container with mounted Composer home.
+   - Installs `phpgt/gtcommand` in that mounted Composer home.
+7. In both paths, installer creates a real executable launcher named `gt` in a writable bin dir:
+   - prefers `/usr/local/bin`, fallback `~/.local/bin` (or `/tmp/.local/bin`).
+8. If launcher/composer directories are not on `PATH`, installer offers to append exports to the selected shell rc file.
+
+Notes
+-----
+
+- Default mode is quiet (suppresses noisy command output) and shows simple progress feedback for long steps.
+- Use `--verbose` for full command logs.
+- `gt` stays updatable via Composer (`phpgt/gtcommand`), while the installed `gt` launcher remains a stable entrypoint.
