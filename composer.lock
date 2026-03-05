@@ -8,24 +8,24 @@
     "packages": [
         {
             "name": "composer/semver",
-            "version": "3.3.2",
+            "version": "3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "3953f23262f2bff1919fc82183ad9acb13ff62c9"
+                "reference": "198166618906cb2de69b95d7d47e5fa8aa1b2b95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/3953f23262f2bff1919fc82183ad9acb13ff62c9",
-                "reference": "3953f23262f2bff1919fc82183ad9acb13ff62c9",
+                "url": "https://api.github.com/repos/composer/semver/zipball/198166618906cb2de69b95d7d47e5fa8aa1b2b95",
+                "reference": "198166618906cb2de69b95d7d47e5fa8aa1b2b95",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.2 || ^7.0 || ^8.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.4",
-                "symfony/phpunit-bridge": "^4.2 || ^5"
+                "phpstan/phpstan": "^1.11",
+                "symfony/phpunit-bridge": "^3 || ^7"
             },
             "type": "library",
             "extra": {
@@ -67,9 +67,9 @@
                 "versioning"
             ],
             "support": {
-                "irc": "irc://irc.freenode.org/composer",
+                "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.3.2"
+                "source": "https://github.com/composer/semver/tree/3.4.4"
             },
             "funding": [
                 {
@@ -79,13 +79,9 @@
                 {
                     "url": "https://github.com/composer",
                     "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                    "type": "tidelift"
                 }
             ],
-            "time": "2022-04-01T19:23:25+00:00"
+            "time": "2025-08-20T19:15:30+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
@@ -153,28 +149,31 @@
         },
         {
             "name": "phpgt/build",
-            "version": "v1.2.1",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Build.git",
-                "reference": "4c1bfbaf5840854ab98bc3b7f6e3a2cc71461ce2"
+                "reference": "27d247590819c4b5dd6052a5758844ff1bb03b17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Build/zipball/4c1bfbaf5840854ab98bc3b7f6e3a2cc71461ce2",
-                "reference": "4c1bfbaf5840854ab98bc3b7f6e3a2cc71461ce2",
+                "url": "https://api.github.com/repos/PhpGt/Build/zipball/27d247590819c4b5dd6052a5758844ff1bb03b17",
+                "reference": "27d247590819c4b5dd6052a5758844ff1bb03b17",
                 "shasum": ""
             },
             "require": {
-                "composer/semver": "3.*",
+                "composer/semver": "v3.*",
                 "ext-json": "*",
                 "php": ">=7.4",
-                "phpgt/cli": "^1.3.0",
-                "webmozart/glob": "4.4.*"
+                "phpgt/cli": "^v1.3.0",
+                "phpgt/sync": "^1.3.0",
+                "webmozart/glob": "v4.4.*"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^9.5"
+                "phpmd/phpmd": "^2.13",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.1",
+                "squizlabs/php_codesniffer": "^3.7"
             },
             "bin": [
                 "bin/build"
@@ -192,7 +191,7 @@
             "description": "Client-side build system for PHP projects.",
             "support": {
                 "issues": "https://github.com/PhpGt/Build/issues",
-                "source": "https://github.com/PhpGt/Build/tree/v1.2.1"
+                "source": "https://github.com/PhpGt/Build/tree/v1.2.3"
             },
             "funding": [
                 {
@@ -200,31 +199,33 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-12T17:52:06+00:00"
+            "time": "2023-08-09T10:34:24+00:00"
         },
         {
             "name": "phpgt/cli",
-            "version": "v1.3.3",
+            "version": "v1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Cli.git",
-                "reference": "b0334aee36f9e8aad9ca8b9cda397ffe5781f96f"
+                "reference": "42aeef24ab9789907358002fdcc37cb3a2e26b4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/b0334aee36f9e8aad9ca8b9cda397ffe5781f96f",
-                "reference": "b0334aee36f9e8aad9ca8b9cda397ffe5781f96f",
+                "url": "https://api.github.com/repos/PhpGt/Cli/zipball/42aeef24ab9789907358002fdcc37cb3a2e26b4b",
+                "reference": "42aeef24ab9789907358002fdcc37cb3a2e26b4b",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-readline": "*",
-                "php": ">=8.0",
-                "phpgt/daemon": "^v1.1"
+                "php": ">=8.2",
+                "phpgt/daemon": "^1.1.3"
             },
             "require-dev": {
-                "phpstan/phpstan": "^v1.4",
-                "phpunit/phpunit": "^v9.5"
+                "phpmd/phpmd": "^2.13",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.5",
+                "squizlabs/php_codesniffer": "^3.7"
             },
             "type": "library",
             "autoload": {
@@ -251,7 +252,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PhpGt/Cli/issues",
-                "source": "https://github.com/PhpGt/Cli/tree/v1.3.3"
+                "source": "https://github.com/PhpGt/Cli/tree/v1.3.5"
             },
             "funding": [
                 {
@@ -259,30 +260,32 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-26T15:38:15+00:00"
+            "time": "2024-05-08T17:45:44+00:00"
         },
         {
             "name": "phpgt/cron",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/PhpGt/Cron.git",
-                "reference": "b6b1e8d762d6149e0d7bcb81f8e4cc3bf1dcfa6c"
+                "url": "https://github.com/phpgt/Cron.git",
+                "reference": "12e2e741d623cf05422f6afa55865b2b15543999"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Cron/zipball/b6b1e8d762d6149e0d7bcb81f8e4cc3bf1dcfa6c",
-                "reference": "b6b1e8d762d6149e0d7bcb81f8e4cc3bf1dcfa6c",
+                "url": "https://api.github.com/repos/phpgt/Cron/zipball/12e2e741d623cf05422f6afa55865b2b15543999",
+                "reference": "12e2e741d623cf05422f6afa55865b2b15543999",
                 "shasum": ""
             },
             "require": {
                 "dragonmantank/cron-expression": "^2.2",
-                "php": ">=7.4",
+                "php": ">=8.1",
                 "phpgt/cli": "1.*"
             },
             "require-dev": {
-                "phpstan/phpstan": ">=0.12.64",
-                "phpunit/phpunit": "9.*"
+                "phpmd/phpmd": "^2.13",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.1",
+                "squizlabs/php_codesniffer": "^3.7"
             },
             "bin": [
                 "bin/cron"
@@ -296,8 +299,8 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Run scripts or static functions at regular intervals.",
             "support": {
-                "issues": "https://github.com/PhpGt/Cron/issues",
-                "source": "https://github.com/PhpGt/Cron/tree/v1.0.3"
+                "issues": "https://github.com/phpgt/Cron/issues",
+                "source": "https://github.com/phpgt/Cron/tree/v1.0.4"
             },
             "funding": [
                 {
@@ -305,28 +308,31 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-23T10:47:38+00:00"
+            "time": "2025-03-07T18:07:32+00:00"
         },
         {
             "name": "phpgt/daemon",
-            "version": "v1.1.2",
+            "version": "v1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Daemon.git",
-                "reference": "6490df99a22818149f30e3af408002ea7f73e035"
+                "reference": "4609225cf82a1f13a5f7364870a2b5f52c6a2529"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Daemon/zipball/6490df99a22818149f30e3af408002ea7f73e035",
-                "reference": "6490df99a22818149f30e3af408002ea7f73e035",
+                "url": "https://api.github.com/repos/PhpGt/Daemon/zipball/4609225cf82a1f13a5f7364870a2b5f52c6a2529",
+                "reference": "4609225cf82a1f13a5f7364870a2b5f52c6a2529",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "ext-pcntl": "*",
+                "php": ">=8.1"
             },
             "require-dev": {
-                "phpstan/phpstan": ">=0.12.42",
-                "phpunit/phpunit": "9.*"
+                "phpmd/phpmd": "^2.13",
+                "phpstan/phpstan": "^v1.10",
+                "phpunit/phpunit": "^10.5",
+                "squizlabs/php_codesniffer": "^3.7"
             },
             "type": "library",
             "autoload": {
@@ -338,37 +344,38 @@
             "description": "Background script execution with cross-platform compatible streaming.",
             "support": {
                 "issues": "https://github.com/PhpGt/Daemon/issues",
-                "source": "https://github.com/PhpGt/Daemon/tree/v1.1.2"
+                "source": "https://github.com/PhpGt/Daemon/tree/v1.1.4"
             },
             "funding": [
                 {
-                    "url": "https://github.com/phpgt",
+                    "url": "https://github.com/sponsors/PhpGt",
                     "type": "github"
                 }
             ],
-            "time": "2021-02-02T17:33:16+00:00"
+            "time": "2024-05-16T08:42:54+00:00"
         },
         {
             "name": "phpgt/server",
-            "version": "v1.1.4",
+            "version": "v1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Server.git",
-                "reference": "6eec4cfcb0802fa409deb10713651ee842a228de"
+                "reference": "6e959fcf874d3363ddbe708f25f907b42dcb17bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Server/zipball/6eec4cfcb0802fa409deb10713651ee842a228de",
-                "reference": "6eec4cfcb0802fa409deb10713651ee842a228de",
+                "url": "https://api.github.com/repos/PhpGt/Server/zipball/6e959fcf874d3363ddbe708f25f907b42dcb17bc",
+                "reference": "6e959fcf874d3363ddbe708f25f907b42dcb17bc",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
-                "phpgt/cli": "*"
+                "php": ">=8.0",
+                "phpgt/cli": "^1.3.5"
             },
             "require-dev": {
-                "phpstan/phpstan": "v1.8.0",
-                "phpunit/phpunit": "v9.5.21"
+                "phpmd/phpmd": "^2.13",
+                "phpstan/phpstan": "v1.10",
+                "squizlabs/php_codesniffer": "^3.7"
             },
             "bin": [
                 "bin/serve"
@@ -383,7 +390,7 @@
             "description": "Development HTTP server.",
             "support": {
                 "issues": "https://github.com/PhpGt/Server/issues",
-                "source": "https://github.com/PhpGt/Server/tree/v1.1.4"
+                "source": "https://github.com/PhpGt/Server/tree/v1.1.5"
             },
             "funding": [
                 {
@@ -391,32 +398,90 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-24T22:38:50+00:00"
+            "time": "2024-05-09T15:21:06+00:00"
         },
         {
-            "name": "webmozart/assert",
-            "version": "1.11.0",
+            "name": "phpgt/sync",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozarts/assert.git",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
+                "url": "https://github.com/PhpGt/Sync.git",
+                "reference": "5d1ee6aaa0b97919629c83a90745a1407ddfd66c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991",
+                "url": "https://api.github.com/repos/PhpGt/Sync/zipball/5d1ee6aaa0b97919629c83a90745a1407ddfd66c",
+                "reference": "5d1ee6aaa0b97919629c83a90745a1407ddfd66c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "phpgt/cli": "^1.3",
+                "webmozart/glob": "4.4.*"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "^2.13",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.1",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "bin": [
+                "bin/sync"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gt\\Sync\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Synchronise two directories.",
+            "keywords": [
+                "copy",
+                "file",
+                "files",
+                "filesystem",
+                "recursive",
+                "rsync",
+                "synchronise",
+                "synchronize"
+            ],
+            "support": {
+                "issues": "https://github.com/PhpGt/Sync/issues",
+                "source": "https://github.com/PhpGt/Sync/tree/v1.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/PhpGt",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-07-07T16:49:08+00:00"
+        },
+        {
+            "name": "webmozart/assert",
+            "version": "1.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozarts/assert.git",
+                "reference": "9be6926d8b485f55b9229203f962b51ed377ba68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/9be6926d8b485f55b9229203f962b51ed377ba68",
+                "reference": "9be6926d8b485f55b9229203f962b51ed377ba68",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
+                "ext-date": "*",
+                "ext-filter": "*",
                 "php": "^7.2 || ^8.0"
             },
-            "conflict": {
-                "phpstan/phpstan": "<0.12.20",
-                "vimeo/psalm": "<4.6.1 || 4.6.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5.13"
+            "suggest": {
+                "ext-intl": "",
+                "ext-simplexml": "",
+                "ext-spl": ""
             },
             "type": "library",
             "extra": {
@@ -447,9 +512,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
+                "source": "https://github.com/webmozarts/assert/tree/1.12.1"
             },
-            "time": "2022-06-03T18:03:27+00:00"
+            "time": "2025-10-29T15:56:20+00:00"
         },
         {
             "name": "webmozart/glob",
@@ -556,12 +621,12 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.0"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
