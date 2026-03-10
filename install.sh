@@ -629,6 +629,7 @@ main() {
 		say "gt launcher installed at: ${GT_LAUNCHER_PATH}"
 	fi
 	say "Installation complete."
+	say "Close this terminal and open a new one to refresh your PATH."
 	say "Then run: gt --help"
 }
 
