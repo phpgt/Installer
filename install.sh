@@ -42,10 +42,12 @@ have_command() {
 check_existing_gt() {
 	if have_command gt; then
 		existing_gt_path="$(command -v gt 2>/dev/null)"
-		say "PhpGt is already installed."
+		echo
+		say "PHP.GT is already installed."
 		if [ -n "$existing_gt_path" ]; then
 			say "Existing gt command: ${existing_gt_path}"
 		fi
+		echo
 		say "No changes were made."
 		exit 0
 	fi
