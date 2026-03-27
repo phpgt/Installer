@@ -39,6 +39,18 @@ have_command() {
 	command -v "$1" >/dev/null 2>&1
 }
 
+check_existing_gt() {
+	if have_command gt; then
+		existing_gt_path="$(command -v gt 2>/dev/null)"
+		say "PhpGt is already installed."
+		if [ -n "$existing_gt_path" ]; then
+			say "Existing gt command: ${existing_gt_path}"
+		fi
+		say "No changes were made."
+		exit 0
+	fi
+}
+
 can_prompt() {
 	[ -r /dev/tty ] && [ -w /dev/tty ]
 }
@@ -600,6 +612,7 @@ install_docker() {
 main() {
 	parse_args "$@"
 	init_log
+	check_existing_gt
 	preflight
 
 	if [ "$NATIVE_OK" -eq 0 ] && [ "$DOCKER_OK" -eq 0 ]; then
