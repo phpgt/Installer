@@ -206,17 +206,27 @@ infer_shell() {
 }
 
 select_shell() {
-	default_shell="$(infer_shell)"
-	case "$default_shell" in
-		bash|zsh|sh) ;;
-		*) default_shell="sh" ;;
-	esac
+	if [ -n "$SHELL_OVERRIDE" ]; then
+		case "$SHELL_OVERRIDE" in
+			bash|zsh|sh)
+				SELECTED_SHELL="$SHELL_OVERRIDE"
+				;;
+		esac
+	fi
 
-	choice="$(prompt_default "Which shell profile should I update? [bash/zsh/sh] (default: ${default_shell}): " "$default_shell")"
-	case "$choice" in
-		bash|zsh|sh) SELECTED_SHELL="$choice" ;;
-		*) SELECTED_SHELL="$default_shell" ;;
-	esac
+	if [ -z "$SELECTED_SHELL" ]; then
+		default_shell="$(infer_shell)"
+		case "$default_shell" in
+			bash|zsh|sh) ;;
+			*) default_shell="sh" ;;
+		esac
+
+		choice="$(prompt_default "Which shell profile should I update? [bash/zsh/sh] (default: ${default_shell}): " "$default_shell")"
+		case "$choice" in
+			bash|zsh|sh) SELECTED_SHELL="$choice" ;;
+			*) SELECTED_SHELL="$default_shell" ;;
+		esac
+	fi
 
 	case "$SELECTED_SHELL" in
 		bash) SHELL_RC_FILE="${HOME}/.bashrc" ;;
