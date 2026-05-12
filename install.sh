@@ -10,6 +10,7 @@ LOG_FILE="${TMPDIR:-/tmp}/phpgt-installer.log"
 
 VERBOSE=0
 SHELL_OVERRIDE=""
+ADD_PATH_CHOICE=""
 SELECTED_SHELL=""
 SHELL_RC_FILE=""
 COMPOSER_CMD=""
@@ -124,6 +125,12 @@ parse_args() {
 				;;
 			--shell=*)
 				SHELL_OVERRIDE="${arg#--shell=}"
+				;;
+			--add-path)
+				ADD_PATH_CHOICE="Y"
+				;;
+			--no-add-path)
+				ADD_PATH_CHOICE="n"
 				;;
 		esac
 		shift
@@ -257,7 +264,12 @@ ensure_path_export() {
 			;;
 	esac
 
-	add_path_choice="$(prompt_default "Add ${label} to PATH in ${SHELL_RC_FILE}? [Y/n]: " "Y")"
+	if [ -n "$ADD_PATH_CHOICE" ]; then
+		add_path_choice="$ADD_PATH_CHOICE"
+	else
+		add_path_choice="$(prompt_default "Add ${label} to PATH in ${SHELL_RC_FILE}? [Y/n]: " "Y")"
+	fi
+
 	case "$add_path_choice" in
 		n|N)
 			say "Skipped PATH update. Add this manually:"
