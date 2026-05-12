@@ -15,9 +15,9 @@ Verbose output:
 
 - `curl https://php.gt/install | sh -s -- --verbose`
 
-Force shell profile selection:
+Force bash profile selection, adding the path for automatic non-interactive installation:
 
-- `curl https://php.gt/install | sh -s -- --shell bash`
+- `curl https://php.gt/install | sh -s -- --shell bash --add-path`
 
 The `gt` command itself is implemented at [PHP.GT/GtCommand](https://github.com/phpgt/GtCommand) and installed as the Composer package `phpgt/gtcommand`.
 
