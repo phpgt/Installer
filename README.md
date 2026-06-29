@@ -48,3 +48,9 @@ Notes
 - By default, the installer suppresses noisy command output and shows simple progress feedback for long steps.
 - Use `--verbose` for full command logs.
 - `gt` remains updatable through Composer (`phpgt/gtcommand`), while the installed launcher stays as the stable entry point.
+
+# Proudly sponsored by
+
+[JetBrains Open Source sponsorship program](https://www.jetbrains.com/community/opensource/)
+
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://www.jetbrains.com/community/opensource/)
